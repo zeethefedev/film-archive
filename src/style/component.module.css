@@ -1,41 +1,39 @@
 .container {
-  width: 100%;
-  overflow-x: hidden;
+  /* width: 100%;
+  overflow-x: hidden; */
+  height: 30px;
+  overflow: hidden;
+  line-height: 30px;
 }
 
 @keyframes infiniteScroll {
-  from {
-    transform: translateX(0);
+  0% {
+    left: 100%;
   }
-  to {
-    transform: translateX(calc(0px - 50%));
+  100% {
+    left: -100%;
   }
 }
 
 .horizontalScrollingWrapper {
-  display: flex;
-  width: 1000px;
-  animation-name: infiniteScroll;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
+  /* display: flex; */
+  /* width: 1000px; */
+  /* animation: infiniteScroll 10s linear infinite; */
+  /* top: 0; */
+  left: 100%;
+  width: 100%;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  animation: infiniteScroll 30s linear infinite;
 }
 
-.wrapper0 {
-  animation-duration: 20s;
-}
-
-.wrapper1 {
-  animation-duration: 10s;
-}
-.wrapper2 {
-  animation-duration: 15s;
-}
-.wrapper3 {
-  animation-duration: 25s;
+.marquee2 {
+  animation-delay: 15s;
 }
 
 .horizontalScrollingItem {
-  white-space: nowrap;
+  /* white-space: nowrap;
   display: flex;
-  align-items: center;
+  align-items: center; */
 }

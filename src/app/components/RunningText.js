@@ -15,11 +15,11 @@ const filmRollsImage = [
 function RunningText() {
   const text = (stringArray, imageArray) => {
     const element = stringArray.map((string, index) => (
-      <div key={index} className={component.horizontalScrollingItem}>
+      <span key={index} className={component.horizontalScrollingItem}>
         {string}
         <img src={imageArray[index].src} alt={imageArray[index].alt} />
         &nbsp;
-      </div>
+      </span>
     ));
     const textElements = [1, 2, 3, 4, 5].map((i, index) => element);
     return textElements;
@@ -27,17 +27,16 @@ function RunningText() {
 
   return (
     <div>
-      {[1, 2, 3, 4].map((i, index) => (
-        <div key={index} className={component.container}>
-          <div
-            className={`${component.horizontalScrollingWrapper} ${
-              component[`wrapper${index}`]
-            }`}
-          >
-            {text(["Film", "is", "not", "dead"], filmRollsImage.slice(0, 4))}
-          </div>
+      <div className={component.container}>
+        <div className={component.horizontalScrollingWrapper}>
+          {text(["Film", "is", "not", "dead"], filmRollsImage.slice(0, 4))}
         </div>
-      ))}
+        <div
+          className={`${component.horizontalScrollingWrapper} ${component.marquee2}`}
+        >
+          {text(["Film", "is", "not", "dead"], filmRollsImage.slice(0, 4))}
+        </div>
+      </div>
     </div>
   );
 }
