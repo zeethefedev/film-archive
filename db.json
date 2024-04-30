@@ -1,0 +1,16 @@
+{
+  "film-rolls": [
+    {
+      "id": "1",
+      "name": "kodak-colorplus-200",
+      "displayName": "Kodak ColorPlus 200"
+    },
+    { "id": "2", "name": "kodak-gold-200", "displayName": "Kodak Gold 200" },
+    {
+      "id": "3",
+      "name": "fujifilm-eterna-500t",
+      "displayName": "Fujifilm Eterna 500T"
+    },
+    { "id": "4", "name": "fujifilm-c200", "displayName": "Fujifilm c200" }
+  ]
+}

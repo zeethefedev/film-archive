@@ -9,7 +9,7 @@ async function Film() {
       <h1>Film is not dead</h1>
       <div>
         {filmRolls.map((roll) => (
-          <div key={roll.id}>{roll.title}</div>
+          <div key={roll.id}>{roll.displayName}</div>
         ))}
       </div>
     </div>
