@@ -21,21 +21,23 @@ function RunningText() {
         &nbsp;
       </span>
     ));
-    const textElements = [1, 2, 3, 4, 5].map((i, index) => element);
+    const textElements = [1, 2].map((i, index) => element);
     return textElements;
   };
 
   return (
     <div>
       <div className={component.container}>
-        <div className={component.horizontalScrollingWrapper}>
-          {text(["Film", "is", "not", "dead"], filmRollsImage.slice(0, 4))}
-        </div>
-        <div
-          className={`${component.horizontalScrollingWrapper} ${component.marquee2}`}
-        >
-          {text(["Film", "is", "not", "dead"], filmRollsImage.slice(0, 4))}
-        </div>
+        {[1, 2].map((i, index) => (
+          <div
+            key={index}
+            className={`${component.horizontalScrollingWrapper} ${
+              index === 1 ? component.marquee2 : ""
+            }`}
+          >
+            {text(["Film", "is", "not", "dead"], filmRollsImage.slice(0, 4))}
+          </div>
+        ))}
       </div>
     </div>
   );

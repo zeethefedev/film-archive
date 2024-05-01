@@ -1,6 +1,5 @@
+/* running text */
 .container {
-  /* width: 100%;
-  overflow-x: hidden; */
   height: 30px;
   overflow: hidden;
   line-height: 30px;
@@ -16,10 +15,6 @@
 }
 
 .horizontalScrollingWrapper {
-  /* display: flex; */
-  /* width: 1000px; */
-  /* animation: infiniteScroll 10s linear infinite; */
-  /* top: 0; */
   left: 100%;
   width: 100%;
   overflow: hidden;
@@ -33,7 +28,38 @@
 }
 
 .horizontalScrollingItem {
-  /* white-space: nowrap;
-  display: flex;
-  align-items: center; */
+}
+
+/* parallax */
+.parallax {
+  background-image: url("https://www.w3schools.com/howto/img_parallax.jpg");
+
+  /* Set a specific height */
+  min-height: 500px;
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* custom cursor */
+.filmCardWrapper {
+  /* background-color: #1D1E22; */
+  cursor: none;
+}
+
+.rounded {
+  width: 30px;
+  height: 30px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+}
+
+.pointed {
+  width: 7px;
+  height: 7px;
+  background-color: white;
+  border-radius: 50%;
 }

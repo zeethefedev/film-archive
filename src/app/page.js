@@ -4,7 +4,9 @@ import Landing from "./components/Landing";
 
 export default function Home() {
   return (
-    <main className={styles.main}>
+    <main
+    // className={styles.main}
+    >
       <h1>Hello</h1>
       <Landing />
     </main>

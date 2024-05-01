@@ -3,14 +3,26 @@
     {
       "id": "1",
       "name": "kodak-colorplus-200",
-      "displayName": "Kodak ColorPlus 200"
+      "displayName": "Kodak ColorPlus 200",
+      "thumbnail": "/thumbnails/thumbnail1.jpg"
     },
-    { "id": "2", "name": "kodak-gold-200", "displayName": "Kodak Gold 200" },
+    {
+      "id": "2",
+      "name": "kodak-gold-200",
+      "displayName": "Kodak Gold 200",
+      "thumbnail": "/thumbnails/thumbnail2.jpg"
+    },
     {
       "id": "3",
       "name": "fujifilm-eterna-500t",
-      "displayName": "Fujifilm Eterna 500T"
+      "displayName": "Fujifilm Eterna 500T",
+      "thumbnail": "/thumbnails/thumbnail3.jpg"
     },
-    { "id": "4", "name": "fujifilm-c200", "displayName": "Fujifilm c200" }
+    {
+      "id": "4",
+      "name": "fujifilm-c200",
+      "displayName": "Fujifilm c200",
+      "thumbnail": "/thumbnails/thumbnail4.jpg"
+    }
   ]
 }
