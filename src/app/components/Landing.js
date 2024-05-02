@@ -2,13 +2,16 @@ import React from "react";
 import RunningText from "./RunningText";
 import ParallaxSection from "./ParallaxSection";
 import FilmList from "./FilmList";
+import { getFilmRolls } from "../api/film.api";
 
-function Landing() {
+async function Landing() {
+  const filmRolls = await getFilmRolls();
+
   return (
     <div>
       {/* <RunningText /> */}
       {/* <ParallaxSection /> */}
-      <FilmList />
+      <FilmList filmRolls={filmRolls} />
     </div>
   );
 }
