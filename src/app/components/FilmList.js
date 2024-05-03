@@ -1,29 +1,61 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import FilmCard from "./FilmCard";
 import component from "../../style/component.module.css";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import ScrollTrigger from "gsap/dist/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 function FilmList({ films }) {
   const targetRef = useRef();
+  const containerRef = useRef();
 
-  const { scrollYProgress } = useScroll({ target: targetRef });
-  const x = useTransform(scrollYProgress, [0, 1], ["1%", "-150%"]);
+  const [containerHeight, setContainerHeight] = useState("auto");
+
+  useEffect(() => {
+    const container = containerRef?.current.offsetWidth;
+    setContainerHeight(container);
+  }, [containerRef]);
+
+  useGSAP(
+    () => {
+      let cards = gsap.utils.toArray("#card");
+
+      gsap.to(cards, {
+        xPercent: -100 * (cards.length - 1),
+        ease: "none",
+        scrollTrigger: {
+          trigger: "#container",
+          pin: true,
+          scrub: 1,
+          snap: 1 / (cards.length - 1),
+          end: () => "+=" + document.querySelector("#container").offsetWidth,
+        },
+      });
+    },
+    { scope: targetRef }
+  );
 
   return (
     <div ref={targetRef}>
       {/* <h1>FilmList</h1> */}
       <div className={`${component.horizontalScrollWrapper}`}>
-        <motion.div style={{ x }} className={component.cardWrapper}>
+        <div
+          ref={containerRef}
+          id="container"
+          className={component.cardWrapper}
+        >
           {films.map((film, index) => (
-            <div key={index}>
+            <div key={index} id="card">
               <FilmCard film={film} />
             </div>
           ))}
-        </motion.div>
+        </div>
       </div>
-      <div>
+      <div style={{ height: containerHeight }}>
         nsectetur adipiscing elit. Phasellus imperdiet, nulla et dictum
         interdum, nisi lorem egestas odio, vitae scelerisque enim ligula
         venenatis dolor. Maecenas nisl est, ultrices nec congue eget, auctor

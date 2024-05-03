@@ -11,9 +11,11 @@
     "full": "concurrently \"npm run dev\" \"json-server --watch db.json --port 3001\""
   },
   "dependencies": {
+    "@gsap/react": "^2.1.1",
     "concurrently": "^8.2.2",
     "dotenv": "^16.4.5",
     "framer-motion": "^11.1.7",
+    "gsap": "^3.12.5",
     "json-server": "^1.0.0-alpha.23",
     "next": "14.2.3",
     "react": "^18",
