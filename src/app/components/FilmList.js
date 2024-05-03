@@ -5,7 +5,7 @@ import FilmCard from "./FilmCard";
 import component from "../../style/component.module.css";
 import { motion, useScroll, useTransform } from "framer-motion";
 
-function FilmList({ filmRolls }) {
+function FilmList({ films }) {
   const targetRef = useRef();
 
   const { scrollYProgress } = useScroll({ target: targetRef });
@@ -16,7 +16,7 @@ function FilmList({ filmRolls }) {
       {/* <h1>FilmList</h1> */}
       <div className={`${component.horizontalScrollWrapper}`}>
         <motion.div style={{ x }} className={component.cardWrapper}>
-          {filmRolls.map((film, index) => (
+          {films.map((film, index) => (
             <div key={index}>
               <FilmCard film={film} />
             </div>

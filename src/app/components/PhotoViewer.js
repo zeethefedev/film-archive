@@ -62,7 +62,7 @@ function PhotoViewer({ photo }) {
           onWheelCapture={handleScroll}
         >
           <img
-            src={photo.src}
+            src={photo.filename}
             alt={photo.alt}
             style={{
               width: "100%",

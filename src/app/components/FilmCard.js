@@ -37,12 +37,13 @@ function FilmCard({ film }) {
   const cursorRef = useRef();
   const [cursorText, setCursorText] = useState();
   const [useCustomCursor, setUseCustomCursor] = useState(false);
+  const filmContent = film.content;
 
   const router = useRouter();
 
   const handleHoverImage = () => {
     setUseCustomCursor(true);
-    setCursorText(film.displayName);
+    setCursorText(filmContent.displayName);
   };
 
   const handleReset = () => {
@@ -51,13 +52,13 @@ function FilmCard({ film }) {
   };
 
   const handleClickImage = () => {
-    router.push(`/film/${film.name}`);
+    router.push(`/film/${film.full_slug}`);
   };
 
   return (
     <div>
       <div>FilmCard</div>
-      <div>{film.displayName}</div>
+      <div>{filmContent.displayName}</div>
       <div
         ref={cursorRef}
         className={component.filmCardWrapper}
@@ -70,7 +71,12 @@ function FilmCard({ film }) {
           cursorRef={cursorRef}
           text={cursorText}
         />
-        <Image width={500} height={500} src={film.thumbnail} alt={film.name} />
+        <img
+          width={500}
+          height={500}
+          src={filmContent.thumbnail.filename}
+          alt={filmContent.thumbnail.alt}
+        />
       </div>
     </div>
   );

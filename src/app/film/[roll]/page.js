@@ -1,12 +1,14 @@
+import { getFilm } from "@/app/api/film.api";
 import PhotoList from "@/app/components/PhotoList";
 import React from "react";
 
-function FilmRoll({ params }) {
+async function FilmRoll({ params }) {
   const filmRoll = params.roll;
+  const filmData = await getFilm(filmRoll);
   return (
     <div>
-      {filmRoll}
-      <PhotoList />
+      {filmData.displayName}
+      <PhotoList photos={filmData.content.photos} />
     </div>
   );
 }
