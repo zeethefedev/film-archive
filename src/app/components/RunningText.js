@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import component from "../../style/component.module.css";
+import Img from "./Img";
 
 const filmRollsImage = [
   { id: 1, src: "/filmrolls/roll1.png", alt: "film roll" },
@@ -17,7 +18,12 @@ function RunningText() {
     const element = stringArray.map((string, index) => (
       <span key={index} className={component.horizontalScrollingItem}>
         {string}
-        <img src={imageArray[index].src} alt={imageArray[index].alt} />
+        <Img
+          width="10vw"
+          height="10vh"
+          src={imageArray[index].src}
+          alt={imageArray[index].alt}
+        />
         &nbsp;
       </span>
     ));
@@ -26,7 +32,7 @@ function RunningText() {
   };
 
   return (
-    <div>
+    <div style={{ overflowX: "hidden" }}>
       <div className={component.container}>
         {[1, 2].map((i, index) => (
           <div

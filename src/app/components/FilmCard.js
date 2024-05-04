@@ -4,6 +4,7 @@ import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
 import component from "../../style/component.module.css";
 import { useRouter } from "next/navigation";
+import Img from "./Img";
 
 function CustomCursor({ useCustomCursor, cursorRef, text }) {
   const [cursor, setCursor] = useState({ x: 0, y: 0 });
@@ -71,9 +72,11 @@ function FilmCard({ film }) {
           cursorRef={cursorRef}
           text={cursorText}
         />
-        <img
-          width={500}
-          height={500}
+        <Img
+          // aspectRatio="3/4"
+          // size="30vw"
+          width="40vw"
+          height="30vw"
           src={filmContent.thumbnail.filename}
           alt={filmContent.thumbnail.alt}
         />

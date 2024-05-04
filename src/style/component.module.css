@@ -1,6 +1,6 @@
 /* running text */
 .container {
-  height: 30px;
+  height: 100px;
   overflow: hidden;
   line-height: 30px;
 }
@@ -21,6 +21,7 @@
   position: absolute;
   white-space: nowrap;
   animation: infiniteScroll 30s linear infinite;
+  display: flex;
 }
 
 .marquee2 {
@@ -28,6 +29,7 @@
 }
 
 .horizontalScrollingItem {
+  min-width: 100px;
 }
 
 /* parallax */
@@ -55,6 +57,7 @@
   height: 7px;
   background-color: white;
   border-radius: 50%;
+  z-index: 10;
 }
 
 .horizontalScrollWrapper {
