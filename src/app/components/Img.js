@@ -3,9 +3,18 @@ import React from "react";
 
 function Img(props) {
   const { width, height, src, alt } = props;
+
+  const imageData = src.split("/");
+  const ratio = imageData.find((data) => data.includes("x"))?.replace("x", "/");
+
   return (
     <div
-      style={{ position: "relative", width: width, height: height || "auto" }}
+      style={{
+        position: "relative",
+        width: width,
+        height: height || "auto",
+        aspectRatio: ratio || "auto",
+      }}
     >
       <Image
         src={src}

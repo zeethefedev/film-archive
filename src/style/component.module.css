@@ -1,6 +1,8 @@
 /* running text */
 .container {
+  position: relative;
   height: 100px;
+  width: 50vw;
   overflow: hidden;
   line-height: 30px;
 }
@@ -30,6 +32,10 @@
 
 .horizontalScrollingItem {
   min-width: 100px;
+}
+
+.hideScrollbar::-webkit-scrollbar {
+  display: none;
 }
 
 /* parallax */

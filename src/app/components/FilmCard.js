@@ -73,7 +73,6 @@ function FilmCard({ film }) {
         />
         <Img
           width="40vw"
-          height="30vw"
           src={filmContent.thumbnail.filename}
           alt={filmContent.thumbnail.alt}
         />

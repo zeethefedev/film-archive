@@ -1,7 +1,7 @@
 import React from "react";
-import Image from "next/image";
 import component from "../../style/component.module.css";
 import Img from "./Img";
+import "../globals.css";
 
 const filmRollsImage = [
   { id: 1, src: "/filmrolls/roll1.png", alt: "film roll" },
