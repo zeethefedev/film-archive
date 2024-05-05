@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
 import component from "../../style/component.module.css";
 import { useRouter } from "next/navigation";
@@ -73,8 +72,6 @@ function FilmCard({ film }) {
           text={cursorText}
         />
         <Img
-          // aspectRatio="3/4"
-          // size="30vw"
           width="40vw"
           height="30vw"
           src={filmContent.thumbnail.filename}

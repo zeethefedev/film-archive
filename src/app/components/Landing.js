@@ -11,7 +11,7 @@ async function Landing() {
     <div>
       <RunningText />
       {/* <ParallaxSection /> */}
-      <FilmList films={filmList} />
+      {/* <FilmList films={filmList} /> */}
     </div>
   );
 }

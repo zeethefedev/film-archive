@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 import PhotoViewer from "./PhotoViewer";
 
 const PHOTO_LIST = [
@@ -10,13 +12,31 @@ const PHOTO_LIST = [
 ];
 
 function PhotoList({ photos = PHOTO_LIST }) {
+  const [fullscreen, setFullscreen] = useState(false);
+  const handleShowFullscreen = (index) => {
+    setFullscreen(index);
+  };
+
   return (
     <div>
       <h1>Photo List</h1>
       <div>
         {photos.map((photo, index) => (
-          <div key={index}>
-            <PhotoViewer photo={photo} />
+          <div
+            key={index}
+            style={{
+              display: !fullscreen
+                ? "block"
+                : fullscreen === photo.id
+                ? "block"
+                : "none",
+            }}
+          >
+            <button onClick={() => handleShowFullscreen(photo.id)}>
+              Full Screen
+            </button>
+            <button onClick={() => handleShowFullscreen()}>Exit</button>
+            <PhotoViewer fullscreen={fullscreen} photo={photo} />
           </div>
         ))}
       </div>

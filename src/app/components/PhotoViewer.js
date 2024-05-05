@@ -1,9 +1,9 @@
 "use client";
 
-import Image from "next/image";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
+import Img from "./Img";
 
-function PhotoViewer({ photo }) {
+function PhotoViewer({ fullscreen, photo }) {
   const imageRef = useRef();
   const [scale, setScale] = useState(1);
   const [pos, setPos] = useState({ x: 0, y: 0, scale: 1 });
@@ -31,6 +31,7 @@ function PhotoViewer({ photo }) {
   };
 
   const handleScroll = (e) => {
+    if (!fullscreen) return;
     const delta = e.deltaY * -0.01;
     const newScale = pos.scale + delta < 1 ? 1 : pos.scale + delta;
 
@@ -47,30 +48,34 @@ function PhotoViewer({ photo }) {
     <div>
       PhotoViewer
       <div>
-        <div>
-          <button onClick={handleZoomIn}>Zoom In</button>
-          <button onClick={handleZoomOut}>Zoom Out</button>
-        </div>
+        <div></div>
         <div
           ref={imageRef}
           style={{
-            width: "50vw",
-            height: "40vh",
+            width: photo.id === fullscreen ? "100vw" : "50vw",
+            height: photo.id === fullscreen ? "100vh" : "auto",
             objectFit: "cover",
             overflow: "hidden",
           }}
           onWheelCapture={handleScroll}
         >
-          <img
-            src={photo.filename}
-            alt={photo.alt}
+          <div
+            className="scrollimgzoom"
             style={{
+              backgroundColor: "red",
               width: "100%",
               height: "100%",
               transform: `translate(${pos.x}px, ${pos.y}px) scale(${pos.scale})`,
               transformOrigin: "0 0",
             }}
-          />
+          >
+            <Img
+              src={photo.filename}
+              alt={photo.alt}
+              width="100%"
+              height="100vh"
+            />
+          </div>
         </div>
 
         {/* <Image width={500} height={500} src={photo.src} alt={photo.alt} /> */}
