@@ -3,20 +3,43 @@ import component from "../../style/component.module.css";
 import Img from "./Img";
 import "../globals.css";
 
-const filmRollsImage = [
-  { id: 1, src: "/filmrolls/roll1.png", alt: "film roll" },
-  { id: 2, src: "/filmrolls/roll2.png", alt: "film roll" },
-  { id: 3, src: "/filmrolls/roll3.png", alt: "film roll" },
-  { id: 4, src: "/filmrolls/roll4.png", alt: "film roll" },
-  { id: 5, src: "/filmrolls/roll5.png", alt: "film roll" },
-  { id: 6, src: "/filmrolls/roll6.png", alt: "film roll" },
-  { id: 7, src: "/filmrolls/roll7.png", alt: "film roll" },
+const RUNNING_TEXT = [
+  {
+    text: ["Film is not dead"],
+    image: [{ src: "/filmrolls/roll1.png", alt: "film roll" }],
+    left: "100%",
+  },
+  {
+    text: ["Film", "is not dead"],
+    image: [
+      { src: "/filmrolls/roll2.png", alt: "film roll" },
+      { src: "/filmrolls/roll3.png", alt: "film roll" },
+    ],
+    left: "50%",
+  },
+  {
+    text: ["Film is", "not dead"],
+    image: [
+      { src: "/filmrolls/roll4.png", alt: "film roll" },
+      { src: "/filmrolls/roll5.png", alt: "film roll" },
+    ],
+    left: "100%",
+  },
+  {
+    text: ["Film", "is not", "dead"],
+    image: [
+      { src: "/filmrolls/roll6.png", alt: "film roll" },
+      { src: "/filmrolls/roll7.png", alt: "film roll" },
+      { src: "/filmrolls/roll1.png", alt: "film roll" },
+    ],
+    left: "100%",
+  },
 ];
 
 function RunningText() {
   const text = (stringArray, imageArray) => {
     const element = stringArray.map((string, index) => (
-      <span key={index} className={component.horizontalScrollingItem}>
+      <div key={index} className={component.horizontalScrollingItem}>
         {string}
         <Img
           width="10vw"
@@ -24,27 +47,28 @@ function RunningText() {
           src={imageArray[index].src}
           alt={imageArray[index].alt}
         />
-        &nbsp;
-      </span>
+      </div>
     ));
-    const textElements = [1, 2].map((i, index) => element);
-    return textElements;
+    return element;
   };
 
   return (
     <div style={{ overflowX: "hidden" }}>
-      <div className={component.container}>
-        {[1, 2].map((i, index) => (
-          <div
-            key={index}
-            className={`${component.horizontalScrollingWrapper} ${
-              index === 1 ? component.marquee2 : ""
-            }`}
-          >
-            {text(["Film", "is", "not", "dead"], filmRollsImage.slice(0, 4))}
-          </div>
-        ))}
-      </div>
+      {RUNNING_TEXT.map((line, index) => (
+        <div key={index} className={component.container}>
+          {[1, 2].map((i, index) => (
+            <div
+              key={index}
+              className={`landing-text ${
+                component.horizontalScrollingWrapper
+              } ${index === 1 ? component.marquee2 : ""}`}
+              // style={{ left: line.left }}
+            >
+              {text(line.text, line.image)}
+            </div>
+          ))}
+        </div>
+      ))}
     </div>
   );
 }

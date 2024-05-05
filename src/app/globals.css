@@ -38,6 +38,10 @@
   --callout-border-rgb: 172, 175, 176;
   --card-rgb: 180, 185, 188;
   --card-border-rgb: 131, 134, 135;
+  --red: #5c0000;
+  --red-dark: #1f0000;
+  --red-light: #d4b4b4;
+  --beige: #f5f2e4;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -98,6 +102,126 @@ body {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+.landing-text {
+  font-size: 96px;
+  letter-spacing: -0.4rem;
+  text-transform: uppercase;
+}
+
+h1 {
+  font-size: 64px;
+  letter-spacing: -0.1rem;
+  text-transform: uppercase;
+}
+
+h2 {
+  font-size: 36px;
+  font-weight: 600;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+}
+
+h3 {
+  font-size: 24px;
+  font-weight: 500;
+  letter-spacing: 0.1rem;
+}
+
+h4 {
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 0.1rem;
+}
+
+.body-text {
+  font-size: 16px;
+  line-height: 2rem;
+}
+
+.caption {
+  font-size: 12px;
+}
+
+/* element */
+button,
+fieldset,
+input,
+legend,
+select,
+textarea,
+option,
+ul {
+  padding: 8px 12px;
+  outline: 0px;
+}
+
+button,
+fieldset,
+input,
+legend,
+textarea,
+option,
+li,
+ul {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  transition: all 0.1s ease-in-out;
+}
+
+button {
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.2rem;
+  text-transform: lowercase;
+}
+
+.primary-button {
+  background-color: var(--red);
+  color: var(--beige);
+  border: 2px solid var(--red);
+}
+
+.primary-button:hover {
+  background-color: var(--red-dark);
+  border: 2px solid var(--red-dark);
+}
+
+.primary-button:disabled {
+  background-color: var(--red-light);
+  border: 2px solid var(--red-light);
+}
+
+.secondary-button {
+  background-color: var(--beige);
+  color: var(--red);
+  border: 2px solid var(--red);
+}
+
+.secondary-button:hover {
+  color: var(--red-dark);
+  border: 2px solid var(--red-dark);
+}
+
+.secondary-button:disabled {
+  color: var(--red-light);
+  border: 2px solid var(--red-light);
+}
+
+.tetriary-button {
+  background-color: transparent;
+  color: var(--red);
+  border: none;
+}
+
+.tetriary-button:hover {
+  color: var(--red-dark);
+}
+
+.tetriary-button:disabled {
+  color: var(--red-light);
 }
 
 @media (prefers-color-scheme: dark) {
