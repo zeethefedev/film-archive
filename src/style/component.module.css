@@ -7,6 +7,12 @@
   line-height: 30px;
 }
 
+.scrollContainer {
+  position: relative;
+  /* height: 140px; */
+  white-space: nowrap;
+}
+
 @keyframes infiniteScroll {
   0% {
     left: 100%;
