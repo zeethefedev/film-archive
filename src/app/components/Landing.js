@@ -1,6 +1,4 @@
 import React from "react";
-import RunningText from "./RunningText";
-import ParallaxSection from "./ParallaxSection";
 import FilmList from "./FilmList";
 import { getFilmList } from "../api/film.api";
 import ScrollText from "./ScrollText";
@@ -12,8 +10,8 @@ async function Landing() {
     <div>
       {/* <RunningText /> */}
       <ScrollText />
-      {/* <ParallaxSection /> */}
-      {/* <FilmList films={filmList} /> */}
+      {/* <ParallaxSection><div>children</div></ParallaxSection> */}
+      <FilmList films={filmList} />
     </div>
   );
 }

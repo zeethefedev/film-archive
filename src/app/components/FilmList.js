@@ -1,68 +1,31 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef } from "react";
 import FilmCard from "./FilmCard";
 import component from "../../style/component.module.css";
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
-import ScrollTrigger from "gsap/dist/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
+import { motion, useScroll, useTransform } from "framer-motion";
 
 function FilmList({ films }) {
   const targetRef = useRef();
-  const containerRef = useRef();
-  const [containerHeight, setContainerHeight] = useState("auto");
 
-  const handleResize = () => {
-    const container = containerRef?.current.offsetWidth;
-    setContainerHeight(container);
-  };
-
-  useEffect(() => {
-    handleResize();
-  }, [containerRef]);
-
-  useEffect(() => {
-    window.addEventListener("resize", handleResize);
-  }, []);
-
-  useGSAP(
-    () => {
-      let cards = gsap.utils.toArray("#card");
-
-      gsap.to(cards, {
-        xPercent: -90 * (cards.length - 1),
-        ease: "none",
-        scrollTrigger: {
-          trigger: "#container",
-          pin: true,
-          scrub: 1,
-          snap: 1 / (cards.length - 1),
-          end: () => "+=" + containerHeight,
-        },
-      });
-    },
-    { scope: targetRef, dependencies: [containerHeight] }
-  );
+  const { scrollYProgress } = useScroll({
+    target: targetRef,
+    offset: ["start start", "end end"],
+    // "start end" means when the start of the target meets the end of the container.
+  });
+  const x = useTransform(scrollYProgress, [0, 0.5], ["1%", "-200%"]);
 
   return (
-    <div ref={targetRef}>
-      {/* <h1>FilmList</h1> */}
-      <div className={`${component.horizontalScrollWrapper}`}>
-        <div
-          ref={containerRef}
-          id="container"
-          className={component.cardWrapper}
-        >
+    <div ref={targetRef} style={{ height: "300vh" }}>
+      <div className={component.horizontalScrollWrapper}>
+        <motion.div className={component.cardWrapper} style={{ x }}>
           {films.map((film, index) => (
             <div key={index} id="card">
               <FilmCard film={film} />
             </div>
           ))}
-        </div>
+        </motion.div>
       </div>
-      <div style={{ height: containerHeight }}></div>
     </div>
   );
 }

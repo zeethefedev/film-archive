@@ -1,11 +1,12 @@
 import React from "react";
 import component from "../../style/component.module.css";
 
-function ParallaxSection() {
+function ParallaxSection({ children }) {
   return (
     <div>
       <p>Scroll Up and Down this page to see the parallax scrolling effect.</p>
       <div className={component.parallax}></div>
+      <div>{children}</div>
       <div style={{ backgroundColor: "red", fontSize: 36 }}>
         Scroll Up and Down this page to see the parallax scrolling effect. This
         div is just here to enable scrolling. Tip: Try to remove the
