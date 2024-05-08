@@ -33,7 +33,7 @@ function CustomCursor({ useCustomCursor, cursorRef, text }) {
   );
 }
 
-function FilmCard({ film }) {
+function FilmCard({ film, activeCard }) {
   const cursorRef = useRef();
   const [cursorText, setCursorText] = useState();
   const [useCustomCursor, setUseCustomCursor] = useState(false);
@@ -57,25 +57,31 @@ function FilmCard({ film }) {
 
   return (
     <div>
-      <div>FilmCard</div>
-      <div>{filmContent.displayName}</div>
       <div
         ref={cursorRef}
         className={component.filmCardWrapper}
         onMouseEnter={handleHoverImage}
         onMouseLeave={handleReset}
         onClick={handleClickImage}
+        style={{ backgroundColor: "black" }}
       >
         <CustomCursor
           useCustomCursor={useCustomCursor}
           cursorRef={cursorRef}
           text={cursorText}
         />
-        <Img
-          width="40vw"
-          src={filmContent.thumbnail.filename}
-          alt={filmContent.thumbnail.alt}
-        />
+        <div
+          style={{
+            opacity: !activeCard || film.id === activeCard ? 1 : 0.5,
+          }}
+        >
+          <Img
+            width="40vw"
+            aspectRatio="7/5"
+            src={filmContent.thumbnail.filename}
+            alt={filmContent.thumbnail.alt}
+          />
+        </div>
       </div>
     </div>
   );

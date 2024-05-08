@@ -10,14 +10,14 @@ function PhotoViewer({ fullscreen, photo }) {
   const handleScroll = (e) => {
     if (!fullscreen) return;
     const delta = e.deltaY * -0.01;
-    const newScale = pos.scale + delta < 1 ? 1 : pos.scale + delta;
+    const newScale = pos.scale + delta < 1 ? 1 : pos.scale + delta; // can only zoom out = 1
 
     const ratio = 1 - newScale / pos.scale;
 
     setPos({
       scale: newScale,
-      x: pos.x + (e.clientX - pos.x) * ratio,
-      y: pos.y + (e.clientY - pos.y) * ratio,
+      x: newScale === 1 ? 0 : pos.x + (e.clientX - pos.x) * ratio, // reset position
+      y: newScale === 1 ? 0 : pos.y + (e.clientY - pos.y) * ratio, // reset position
     });
   };
 
@@ -27,14 +27,12 @@ function PhotoViewer({ fullscreen, photo }) {
 
   return (
     <div>
-      PhotoViewer
       <div>
-        <div></div>
         <div
           ref={imageRef}
           style={{
-            width: photo.id === fullscreen ? "100vw" : "50vw",
-            objectFit: "cover",
+            width: photo.id === fullscreen?.id ? "auto" : "50vw",
+            objectFit: "contain",
             overflow: "hidden",
           }}
           onWheelCapture={handleScroll}
@@ -47,7 +45,13 @@ function PhotoViewer({ fullscreen, photo }) {
               transformOrigin: "0 0",
             }}
           >
-            <Img src={photo.filename} alt={photo.alt} width="100%" />
+            <Img
+              src={photo.filename}
+              alt={photo.alt}
+              width={!fullscreen ? "100%" : "auto"}
+              height={fullscreen ? "100vh" : "auto"}
+              objectFit={fullscreen ? "contain" : "cover"}
+            />
           </div>
         </div>
       </div>

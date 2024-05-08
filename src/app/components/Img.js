@@ -2,7 +2,7 @@ import Image from "next/image";
 import React from "react";
 
 function Img(props) {
-  const { width, height, src, alt } = props;
+  const { width, height, src, alt, aspectRatio, objectFit = "cover" } = props;
 
   const imageData = src.split("/");
   const ratio = imageData.find((data) => data.includes("x"))?.replace("x", "/");
@@ -11,18 +11,12 @@ function Img(props) {
     <div
       style={{
         position: "relative",
-        width: width,
+        width: width || "auto",
         height: height || "auto",
-        aspectRatio: ratio || "auto",
+        aspectRatio: aspectRatio || ratio || "auto",
       }}
     >
-      <Image
-        src={src}
-        alt={alt}
-        sizes={width}
-        fill
-        style={{ objectFit: "cover" }}
-      />
+      <Image src={src} alt={alt} sizes={width} fill style={{ objectFit }} />
     </div>
   );
 }
