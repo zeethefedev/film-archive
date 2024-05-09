@@ -83,10 +83,7 @@ function ScrollText() {
   return (
     <div ref={targetRef} style={{ height: "300vh" }}>
       <div style={{ position: "sticky", top: 0 }}>
-        <div
-          className={component.hideScrollbar}
-          style={{ width: "50vw", overflowX: "hidden" }}
-        >
+        <div style={{ width: "50vw", overflowX: "hidden" }}>
           {RUNNING_TEXT.map((line, index) => (
             <motion.div
               key={index}

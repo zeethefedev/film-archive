@@ -3,7 +3,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import component from "../../style/component.module.css";
 import { useRouter } from "next/navigation";
-import Img from "./Img";
+import Img from "./generics/Img";
 
 function CustomCursor({ useCustomCursor, cursorRef, text }) {
   const [cursor, setCursor] = useState({ x: 0, y: 0 });

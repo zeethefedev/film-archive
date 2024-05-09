@@ -2,8 +2,9 @@
 
 import React, { useState } from "react";
 import PhotoViewer from "./PhotoViewer";
-import SVGIcon from "./SVGIcon";
-import Overlay from "./Overlay";
+import SVGIcon from "./generics/SVGIcon";
+import Overlay from "./generics/Overlay";
+import PhotoListPlaceholder from "./PhotoListPlaceholder";
 
 const PHOTO_LIST = [
   { id: 1, src: "/thumbnails/thumbnail1.jpg", alt: "film roll" },
@@ -69,6 +70,7 @@ function PhotoList({ photos = PHOTO_LIST }) {
         ))}
       </div>
       {fullscreen && <Overlay open={true}>{photoCard(fullscreen)}</Overlay>}
+      {photos.length < 2 && <PhotoListPlaceholder />}
     </div>
   );
 }

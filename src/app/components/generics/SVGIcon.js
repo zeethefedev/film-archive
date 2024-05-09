@@ -1,5 +1,5 @@
 import React from "react";
-import { ICONS } from "../utils/constants";
+import { ICONS } from "../../utils/constants";
 
 function SVGIcon({
   icon,

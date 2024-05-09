@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
-import Img from "./Img";
+import Img from "./generics/Img";
 
 function PhotoViewer({ fullscreen, photo }) {
   const imageRef = useRef();
