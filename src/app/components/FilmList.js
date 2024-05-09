@@ -10,7 +10,7 @@ function FilmList({ films }) {
 
   const { scrollYProgress: horizontalScroll } = useScroll({
     target: targetRef,
-    offset: ["start start", "end end"],
+    offset: ["start start", "0.7 end"],
     // "start end" means when the start of the target meets the end of the container.
   });
 
@@ -19,7 +19,7 @@ function FilmList({ films }) {
     offset: ["start 0.2", "start start"],
   });
 
-  const x = useTransform(horizontalScroll, [0, 0.5], ["1%", "-200%"]);
+  const x = useTransform(horizontalScroll, [0, 1], ["1%", "-310%"]);
   const backgroundColor = useTransform(
     background,
     [0, 1],

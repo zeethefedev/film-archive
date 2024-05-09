@@ -177,6 +177,7 @@ button {
   font-weight: 600;
   letter-spacing: 0.2rem;
   text-transform: lowercase;
+  cursor: pointer;
 }
 
 .primary-button {
@@ -241,6 +242,10 @@ button {
 
 .tetriary-button:disabled {
   color: var(--red-light);
+}
+
+.clickable {
+  cursor: pointer;
 }
 
 label {

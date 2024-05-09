@@ -31,7 +31,8 @@ function PhotoViewer({ fullscreen, photo }) {
         <div
           ref={imageRef}
           style={{
-            width: photo.id === fullscreen?.id ? "auto" : "50vw",
+            width: photo.id === fullscreen?.id ? "auto" : "40vw",
+            maxWidth: photo.id === fullscreen?.id ? "none" : 360,
             objectFit: "contain",
             overflow: "hidden",
           }}
@@ -50,6 +51,7 @@ function PhotoViewer({ fullscreen, photo }) {
               alt={photo.alt}
               width={!fullscreen ? "100%" : "auto"}
               height={fullscreen ? "100vh" : "auto"}
+              aspectRatio={!fullscreen && "1/1"}
               objectFit={fullscreen ? "contain" : "cover"}
             />
           </div>

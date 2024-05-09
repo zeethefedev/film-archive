@@ -11,9 +11,9 @@ const PHOTO_LIST = [
 
 function PhotoList({ photos = PHOTO_LIST }) {
   const [fullscreen, setFullscreen] = useState(false);
-  const body = document.getElementsByTagName("body");
 
   const handleShowFullscreen = (photo) => {
+    const body = document?.getElementsByTagName("body");
     if (!fullscreen) {
       if (body) {
         body[0].style.overflow = "hidden";
@@ -58,8 +58,10 @@ function PhotoList({ photos = PHOTO_LIST }) {
       <div
         style={{
           display: "flex",
-          flexDirection: "column",
+          flexDirection: "row",
+          flexWrap: "wrap",
           alignItems: "center",
+          justifyContent: "center",
         }}
       >
         {photos.map((photo, index) => (
