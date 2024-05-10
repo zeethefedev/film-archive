@@ -5,39 +5,8 @@ import component from "../../style/component.module.css";
 import { motion, useScroll, useTransform } from "framer-motion";
 
 import "../globals.css";
-
-const RUNNING_TEXT = [
-  {
-    text: ["Film is not dead"],
-    image: [{ src: "/filmrolls/roll1.png", alt: "film roll" }],
-    left: "50%",
-  },
-  {
-    text: ["Film", "is not dead"],
-    image: [
-      { src: "/filmrolls/roll2.png", alt: "film roll" },
-      { src: "/filmrolls/roll3.png", alt: "film roll" },
-    ],
-    left: "-10%",
-  },
-  {
-    text: ["Film is", "not dead"],
-    image: [
-      { src: "/filmrolls/roll4.png", alt: "film roll" },
-      { src: "/filmrolls/roll5.png", alt: "film roll" },
-    ],
-    left: "-10%",
-  },
-  {
-    text: ["Film", "is not", "dead"],
-    image: [
-      { src: "/filmrolls/roll6.png", alt: "film roll" },
-      { src: "/filmrolls/roll7.png", alt: "film roll" },
-      { src: "/filmrolls/roll1.png", alt: "film roll" },
-    ],
-    left: "-20%",
-  },
-];
+import Img from "./generics/Img";
+import { RUNNING_TEXT } from "../utils/constants";
 
 function LineText({ stringArray, imageArray }) {
   return (
@@ -55,8 +24,9 @@ function LineText({ stringArray, imageArray }) {
               key={index}
             >
               {string}
-              <img
-                style={{ maxWidth: 100 }}
+              <Img
+                local
+                width={100}
                 src={imageArray[index].src}
                 alt={imageArray[index].alt}
               />

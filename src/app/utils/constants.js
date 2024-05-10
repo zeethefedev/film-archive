@@ -1,3 +1,11 @@
+import roll1 from "../../../public/filmrolls/roll1.png";
+import roll2 from "../../../public/filmrolls/roll2.png";
+import roll3 from "../../../public/filmrolls/roll3.png";
+import roll4 from "../../../public/filmrolls/roll4.png";
+import roll5 from "../../../public/filmrolls/roll5.png";
+import roll6 from "../../../public/filmrolls/roll6.png";
+import roll7 from "../../../public/filmrolls/roll7.png";
+
 export const ICONS = [
   {
     name: "full-screen",
@@ -6,5 +14,38 @@ export const ICONS = [
   {
     name: "full-screen-exit",
     path: "M10 4H8v4H4v2h6zM8 20h2v-6H4v2h4zm12-6h-6v6h2v-4h4zm0-6h-4V4h-2v6h6z",
+  },
+];
+
+export const RUNNING_TEXT = [
+  {
+    text: ["Film is not dead"],
+    image: [{ src: roll1, alt: "film roll" }],
+    left: "50%",
+  },
+  {
+    text: ["Film", "is not dead"],
+    image: [
+      { src: roll2, alt: "film roll" },
+      { src: roll3, alt: "film roll" },
+    ],
+    left: "-10%",
+  },
+  {
+    text: ["Film is", "not dead"],
+    image: [
+      { src: roll4, alt: "film roll" },
+      { src: roll5, alt: "film roll" },
+    ],
+    left: "-10%",
+  },
+  {
+    text: ["Film", "is not", "dead"],
+    image: [
+      { src: roll6, alt: "film roll" },
+      { src: roll7, alt: "film roll" },
+      { src: roll1, alt: "film roll" },
+    ],
+    left: "-20%",
   },
 ];
