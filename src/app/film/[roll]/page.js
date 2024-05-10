@@ -8,7 +8,10 @@ async function FilmRoll({ params }) {
   return (
     <div>
       {filmData.displayName}
-      <PhotoList photos={filmData.content.photos} />
+      <PhotoList
+        photos={filmData.content.photos}
+        description={filmData.content.description}
+      />
     </div>
   );
 }

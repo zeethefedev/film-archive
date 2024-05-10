@@ -10,7 +10,7 @@ const PHOTO_LIST = [
   { id: 1, src: "/thumbnails/thumbnail1.jpg", alt: "film roll" },
 ];
 
-function PhotoList({ photos = PHOTO_LIST }) {
+function PhotoList({ photos = PHOTO_LIST, description }) {
   const [fullscreen, setFullscreen] = useState(false);
 
   const handleShowFullscreen = (photo) => {
@@ -70,7 +70,9 @@ function PhotoList({ photos = PHOTO_LIST }) {
         ))}
       </div>
       {fullscreen && <Overlay open={true}>{photoCard(fullscreen)}</Overlay>}
-      {photos.length < 2 && <PhotoListPlaceholder />}
+      {(photos.length < 2 || description) && (
+        <PhotoListPlaceholder description={description} />
+      )}
     </div>
   );
 }

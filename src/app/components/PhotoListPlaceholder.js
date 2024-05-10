@@ -1,8 +1,10 @@
 "use client";
 import React, { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { useScroll, useTransform } from "framer-motion";
+import HorizontalScrollSection from "./generics/HorizontalScrollSection";
+import { useRouter } from "next/navigation";
 
-function LineText({ text = "Film is not dead" }) {
+function LineText({ text = "No more film photos beyond this line" }) {
   return (
     <div style={{ display: "flex", gap: 28 }}>
       {[1, 2].map((i, index) => (
@@ -18,35 +20,65 @@ function LineText({ text = "Film is not dead" }) {
   );
 }
 
-function PhotoListPlaceholder() {
+function Description({ description }) {
+  const router = useRouter();
+
+  const handleClickBack = () => {
+    router.push("/");
+  };
+
+  return (
+    <div
+      style={{
+        // width: "50%",
+        maxWidth: 600,
+        margin: "auto",
+        display: "flex",
+        flexDirection: "column",
+        gap: 32,
+        alignItems: "center",
+        textAlign: "center",
+      }}
+    >
+      <h3>{description}</h3>
+      <button className="primary-button" onClick={handleClickBack}>
+        back to home
+      </button>
+    </div>
+  );
+}
+
+function PhotoListPlaceholder(props) {
+  const { description = "Film is not dead" } = props;
   const targetRef = useRef();
 
   const { scrollYProgress } = useScroll({ target: targetRef });
 
   const translate = [
-    useTransform(scrollYProgress, [0, 1], ["-50%", "-10%"]),
-    useTransform(scrollYProgress, [0, 1], ["1%", "-50%"]),
+    useTransform(scrollYProgress, [0, 1], ["-10%", "20%"]),
+    useTransform(scrollYProgress, [0, 1], ["0%", "0%"]),
+    useTransform(scrollYProgress, [0, 1], ["30%", "10%"]),
   ];
 
   return (
-    <div ref={targetRef} style={{ height: "300vh" }}>
-      <div
-        style={{
-          position: "sticky",
-          top: 0,
-          width: "100%",
-          overflowX: "hidden",
-        }}
-      >
-        <motion.div style={{ x: translate[0] }}>
-          <LineText />
-        </motion.div>
-
-        <motion.div style={{ x: translate[1] }}>
-          <LineText />
-        </motion.div>
-      </div>
-    </div>
+    <HorizontalScrollSection
+      multiple
+      wrapperStyle={{
+        width: "100%",
+        height: "100vh",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between",
+        alignItems: "center",
+        margin: "auto",
+      }}
+    >
+      {translate.map((x, index) => ({
+        element:
+          index == 1 ? <Description description={description} /> : <LineText />,
+        x,
+      }))}
+    </HorizontalScrollSection>
   );
 }
 

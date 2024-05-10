@@ -5,11 +5,14 @@ import component from "../../../style/component.module.css";
 import { motion, useScroll, useTransform } from "framer-motion";
 
 function HorizontalScrollSection({
+  customRef,
   children,
   height = "300vh",
   xTranslate = ["1%", "-100%"],
   bgColor = ["#f5f2e4", "#f5f2e4"],
   wrapperStyle = {},
+  elementStyle = {},
+  multiple,
 }) {
   const targetRef = useRef();
 
@@ -29,22 +32,40 @@ function HorizontalScrollSection({
 
   return (
     <motion.div
-      ref={targetRef}
+      ref={customRef || targetRef}
       style={{
         height,
         backgroundColor: bgColor ? backgroundColor : "transparent",
       }}
     >
-      <div
-        style={{
-          position: "sticky",
-          top: 0,
-          overflow: "hidden",
-          ...wrapperStyle,
-        }}
-      >
-        <motion.div style={{ x }}>{children}</motion.div>
-      </div>
+      {multiple ? (
+        <div
+          style={{
+            position: "sticky",
+            top: 0,
+            overflow: "hidden",
+            ...wrapperStyle,
+          }}
+        >
+          {children.map((child, index) => (
+            <motion.div key={index} style={{ x: child.x, ...elementStyle }}>
+              {child.element}
+            </motion.div>
+          ))}
+          {/* const children = [ { element, x } ]; */}
+        </div>
+      ) : (
+        <div
+          style={{
+            position: "sticky",
+            top: 0,
+            overflow: "hidden",
+            ...wrapperStyle,
+          }}
+        >
+          <motion.div style={{ x }}>{children}</motion.div>
+        </div>
+      )}
     </motion.div>
   );
 }

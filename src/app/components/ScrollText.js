@@ -7,6 +7,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import "../globals.css";
 import Img from "./generics/Img";
 import { RUNNING_TEXT } from "../utils/constants";
+import HorizontalScrollSection from "./generics/HorizontalScrollSection";
 
 function LineText({ stringArray, imageArray }) {
   return (
@@ -39,9 +40,9 @@ function LineText({ stringArray, imageArray }) {
 }
 
 function ScrollText() {
-  const targetRef = useRef();
+  const scrollRef = useRef();
 
-  const { scrollYProgress } = useScroll({ target: targetRef });
+  const { scrollYProgress } = useScroll({ target: scrollRef });
 
   const translate = [
     useTransform(scrollYProgress, [0, 1], ["1%", "-95%"]),
@@ -51,21 +52,17 @@ function ScrollText() {
   ];
 
   return (
-    <div ref={targetRef} style={{ height: "300vh" }}>
-      <div style={{ position: "sticky", top: 0 }}>
-        <div style={{ width: "50vw", overflowX: "hidden" }}>
-          {RUNNING_TEXT.map((line, index) => (
-            <motion.div
-              key={index}
-              className={component.scrollContainer}
-              style={{ x: translate[index] }}
-            >
-              <LineText stringArray={line.text} imageArray={line.image} />
-            </motion.div>
-          ))}
-        </div>
-      </div>
-    </div>
+    <HorizontalScrollSection
+      multiple
+      customRef={scrollRef}
+      wrapperStyle={{ width: "50vw" }}
+      elementStyle={{ position: "relative", whiteSpace: "nowrap" }}
+    >
+      {RUNNING_TEXT.map((line, index) => ({
+        element: <LineText stringArray={line.text} imageArray={line.image} />,
+        x: translate[index],
+      }))}
+    </HorizontalScrollSection>
   );
 }
 
