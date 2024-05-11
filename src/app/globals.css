@@ -91,13 +91,8 @@ body {
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  color: var(--red-dark);
+  background-color: var(--beige);
 }
 
 a {
@@ -303,6 +298,7 @@ textarea::placeholder {
   display: flex;
   flex-direction: column;
   gap: 8px;
+  width: 100%;
 }
 
 .hide-scrollbar::-webkit-scrollbar {
@@ -326,8 +322,8 @@ footer {
 }
 
 .footer-wrapper {
-  display: flex;
-  justify-content: space-around;
+  display: grid;
+  grid-template-columns: 70% 30%;
   padding: 64px 100px;
 }
 
@@ -355,6 +351,7 @@ footer {
   display: flex;
   flex-direction: column;
   gap: 16px;
+  align-items: flex-start;
 }
 
 .overlay-wrapper {

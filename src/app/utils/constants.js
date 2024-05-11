@@ -53,3 +53,28 @@ export const RUNNING_TEXT = [
     left: "-20%",
   },
 ];
+
+export const FOOTER_LINKS = {
+  frameWorks: {
+    name: "Frameworks",
+    links: [
+      { name: "NextJS", href: "" },
+      { name: "Framer Motion", href: "" },
+      { name: "StoryBlok", href: "" },
+    ],
+  },
+  otherWorks: {
+    name: "Other works",
+    links: [
+      { name: "Xoi Com", href: "" },
+      { name: "RTD", href: "" },
+    ],
+  },
+  socials: {
+    name: "Socials",
+    links: [
+      { name: "GitHub", href: "https://github.com/zeethefedev" },
+      { name: "LinkedIn", href: "" },
+    ],
+  },
+};

@@ -25,10 +25,18 @@ function CustomCursor({ useCustomCursor, cursorRef, text }) {
 
   return (
     <div
-      className={`cursor ${useCustomCursor && component.pointed}`}
-      style={{ transform: `translate3d(${cursor.x}px, ${cursor.y}px, 0)` }}
+      className={`cursor ${useCustomCursor && component.customCursor}`}
+      style={{
+        transform: `translate3d(${cursor.x}px, ${cursor.y}px, 0)`,
+        whiteSpace: "nowrap",
+        display: "flex",
+        alignItems: "center",
+        gap: 4,
+        color: "#f5f2e4",
+      }}
     >
-      {text}
+      <div className={`${useCustomCursor && component.pointed}`}></div>
+      <div>{text}</div>
     </div>
   );
 }
