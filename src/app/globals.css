@@ -244,6 +244,12 @@ button {
   color: var(--red-light);
 }
 
+.button-icon-text {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
 .clickable {
   cursor: pointer;
 }
@@ -301,6 +307,11 @@ textarea::placeholder {
 
 .hide-scrollbar::-webkit-scrollbar {
   display: none;
+}
+
+.sticky {
+  position: sticky;
+  top: 0;
 }
 
 @media (prefers-color-scheme: dark) {

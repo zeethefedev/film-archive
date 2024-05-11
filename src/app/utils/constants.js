@@ -15,6 +15,10 @@ export const ICONS = [
     name: "full-screen-exit",
     path: "M10 4H8v4H4v2h6zM8 20h2v-6H4v2h4zm12-6h-6v6h2v-4h4zm0-6h-4V4h-2v6h6z",
   },
+  {
+    name: "back",
+    path: "M13.939 4.939L6.879 12l7.06 7.061 2.122-2.122L11.121 12l4.94-4.939z",
+  },
 ];
 
 export const RUNNING_TEXT = [

@@ -55,7 +55,6 @@ function PhotoList({ photos = PHOTO_LIST, description }) {
 
   return (
     <div>
-      <h1>Photo List</h1>
       <div
         style={{
           display: "flex",

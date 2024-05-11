@@ -2,7 +2,7 @@
 import React, { useRef } from "react";
 import { useScroll, useTransform } from "framer-motion";
 import HorizontalScrollSection from "./generics/HorizontalScrollSection";
-import { useRouter } from "next/navigation";
+import BackButton from "./generics/BackButton";
 
 function LineText({ text = "No more film photos beyond this line" }) {
   return (
@@ -21,12 +21,6 @@ function LineText({ text = "No more film photos beyond this line" }) {
 }
 
 function Description({ description }) {
-  const router = useRouter();
-
-  const handleClickBack = () => {
-    router.push("/");
-  };
-
   return (
     <div
       style={{
@@ -41,9 +35,7 @@ function Description({ description }) {
       }}
     >
       <h3>{description}</h3>
-      <button className="primary-button" onClick={handleClickBack}>
-        back to home
-      </button>
+      <BackButton text="back to home" />
     </div>
   );
 }

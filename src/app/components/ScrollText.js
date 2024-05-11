@@ -1,8 +1,7 @@
 "use client";
 
 import React, { useRef } from "react";
-import component from "../../style/component.module.css";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { useScroll, useTransform } from "framer-motion";
 
 import "../globals.css";
 import Img from "./generics/Img";
@@ -27,7 +26,6 @@ function LineText({ stringArray, imageArray }) {
               {string}
               <Img
                 local
-                width={100}
                 src={imageArray[index].src}
                 alt={imageArray[index].alt}
               />

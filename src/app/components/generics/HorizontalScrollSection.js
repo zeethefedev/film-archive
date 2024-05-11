@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useRef } from "react";
-import component from "../../../style/component.module.css";
 import { motion, useScroll, useTransform } from "framer-motion";
 
 function HorizontalScrollSection({
@@ -40,9 +39,8 @@ function HorizontalScrollSection({
     >
       {multiple ? (
         <div
+          className="sticky"
           style={{
-            position: "sticky",
-            top: 0,
             overflow: "hidden",
             ...wrapperStyle,
           }}
@@ -56,9 +54,8 @@ function HorizontalScrollSection({
         </div>
       ) : (
         <div
+          className="sticky"
           style={{
-            position: "sticky",
-            top: 0,
             overflow: "hidden",
             ...wrapperStyle,
           }}
