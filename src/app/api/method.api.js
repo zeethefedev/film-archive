@@ -4,7 +4,7 @@ export const getBaseUrl = (mode = "published") => {
   const API = process.env.API_URL;
   const token =
     mode === "draft" ? process.env.PREVIEW_TOKEN : process.env.PUBLIC_TOKEN;
-  const url = `${API}/stories/?version=${mode}&token=${token}`;
+  const url = `${API}/stories/?content_type=film&version=${mode}&token=${token}`;
   return url;
 };
 
@@ -14,7 +14,7 @@ export const getFilmUrl = (filmName, mode = "published") => {
   const API = process.env.API_URL;
   const token =
     mode === "draft" ? process.env.PREVIEW_TOKEN : process.env.PUBLIC_TOKEN;
-  const url = `${API}/stories/${filmName}?version=${mode}&token=${token}`;
+  const url = `${API}/stories/${filmName}?content_type=film&version=${mode}&token=${token}`;
   return url;
 };
 
@@ -26,6 +26,7 @@ const getPhotoData = (photo) => {
   };
   return photoData;
 };
+
 export const getFilmData = (film) => {
   const filmData = {
     id: film.id,

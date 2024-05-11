@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { FOOTER_LINKS } from "../utils/constants";
+import { postMessage } from "../api/film.api";
 
 function Input(props) {
   const {
@@ -46,6 +47,7 @@ function Footer() {
     setMessage({ ...message, touched: true });
     if (message.value.trim()) {
       console.log(message);
+      postMessage(message.value.trim());
     }
   };
 
