@@ -30,25 +30,27 @@ function PhotoList({ photos = PHOTO_LIST }) {
 
   const photoCard = (photo) => {
     return (
-      <div style={{ position: "relative" }}>
-        <button
-          className="tetriary-button"
-          onClick={() => handleShowFullscreen(!fullscreen && photo)}
-          style={{
-            position: "absolute",
-            zIndex: 10,
-            right: 0,
-            bottom: 0,
-          }}
-        >
-          <SVGIcon
-            icon={!fullscreen ? "full-screen" : "full-screen-exit"}
-            fill="white"
-            width="24px"
-            height="24px"
-          />
-        </button>
-        <PhotoViewer fullscreen={fullscreen} photo={fullscreen || photo} />
+      <div style={{ height: "100vh", display: "flex", alignItems: "center" }}>
+        <div style={{ position: "relative" }}>
+          <button
+            className="tetriary-button"
+            onClick={() => handleShowFullscreen(!fullscreen && photo)}
+            style={{
+              position: "absolute",
+              zIndex: 10,
+              right: 0,
+              bottom: 0,
+            }}
+          >
+            <SVGIcon
+              icon={!fullscreen ? "full-screen" : "full-screen-exit"}
+              fill="white"
+              width="24px"
+              height="24px"
+            />
+          </button>
+          <PhotoViewer fullscreen={fullscreen} photo={fullscreen || photo} />
+        </div>
       </div>
     );
   };
@@ -59,14 +61,19 @@ function PhotoList({ photos = PHOTO_LIST }) {
       <div
         style={{
           display: "flex",
-          flexDirection: "row",
-          flexWrap: "wrap",
+          flexDirection: "column",
+          // flexWrap: "wrap",
           alignItems: "center",
-          justifyContent: "center",
+          justifyContent: "flex-start",
+          height: "100vh",
+          overflow: "scroll",
+          scrollSnapType: "y mandatory",
         }}
       >
         {photos.map((photo, index) => (
-          <div key={index}>{photoCard(photo)}</div>
+          <div key={index} style={{ scrollSnapAlign: "center" }}>
+            {photoCard(photo)}
+          </div>
         ))}
       </div>
       {fullscreen && <Overlay open={true}>{photoCard(fullscreen)}</Overlay>}
