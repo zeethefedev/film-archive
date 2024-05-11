@@ -1,15 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-
-const FOOTER_LINKS = {
-  frameWorks: {
-    name: "Frameworks",
-    links: ["NextJS", "Framer Motion", "StoryBlok"],
-  },
-  otherWorks: { name: "Other works", links: ["Xoi Com", "RTD"] },
-  socials: { name: "Socials", links: ["GitHub", "LinkedIn"] },
-};
+import { FOOTER_LINKS } from "../utils/constants";
 
 function Input(props) {
   const {
@@ -41,13 +33,22 @@ function Input(props) {
     </div>
   );
 }
+
 function Footer() {
   const [message, setMessage] = useState({ value: "", touched: false });
 
   const handleChangeMessage = (event) => {
     setMessage({ value: event.target.value, touched: true });
-    console.log(message);
   };
+
+  const handleSubmitMessage = (e) => {
+    e.preventDefault();
+    setMessage({ ...message, touched: true });
+    if (message.value.trim()) {
+      console.log(message);
+    }
+  };
+
   return (
     <footer>
       <div className="footer-wrapper">
@@ -57,13 +58,15 @@ function Footer() {
               <h4 className="footer-heading">{FOOTER_LINKS[list].name}</h4>
               <div className="body-text footer-links">
                 {FOOTER_LINKS[list].links.map((link, index) => (
-                  <div key={index}>{link}</div>
+                  <a key={index} href={link.href}>
+                    {link.name}
+                  </a>
                 ))}
               </div>
             </div>
           ))}
         </div>
-        <div className="footer-input-wrapper">
+        <form className="footer-input-wrapper" onSubmit={handleSubmitMessage}>
           <Input
             value={message.value}
             handleChangeValue={handleChangeMessage}
@@ -71,12 +74,13 @@ function Footer() {
             error={message.touched && !message.value}
           />
           <button
+            type="submit"
             className="primary-button-light"
             disabled={message.touched && !message.value}
           >
             submit
           </button>
-        </div>
+        </form>
       </div>
     </footer>
   );
