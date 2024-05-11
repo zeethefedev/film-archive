@@ -69,11 +69,14 @@
 }
 
 .pointed {
-  position: absolute;
   width: 7px;
   height: 7px;
-  background-color: white;
+  background-color: var(--beige);
   border-radius: 50%;
+}
+
+.customCursor {
+  position: absolute;
   z-index: 10;
 }
 
