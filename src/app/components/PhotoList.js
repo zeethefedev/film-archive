@@ -5,6 +5,7 @@ import PhotoViewer from "./PhotoViewer";
 import SVGIcon from "./generics/SVGIcon";
 import Overlay from "./generics/Overlay";
 import PhotoListPlaceholder from "./PhotoListPlaceholder";
+import BackButton from "./generics/BackButton";
 
 function PhotoCard({ photo, fullscreen, handleShowFullscreen }) {
   return (
@@ -55,31 +56,39 @@ function PhotoList({ photos, description }) {
 
   return (
     <div>
-      <div
-        className="hide-scrollbar"
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          // flexWrap: "wrap",
-          alignItems: "center",
-          justifyContent: "flex-start",
-          height: "100vh",
-          overflow: "scroll",
-          scrollSnapType: "y mandatory",
-        }}
-      >
-        {photos.map((photo, index) => (
-          <div key={index} style={{ scrollSnapAlign: "center" }}>
-            {/* {photoCard(photo)} */}
-            <PhotoCard
-              photo={photo}
-              fullscreen={fullscreen}
-              handleShowFullscreen={() =>
-                handleShowFullscreen(!fullscreen && photo)
-              }
-            />
-          </div>
-        ))}
+      <div>
+        {photos.length !== 0 && (
+          <BackButton
+            className="tetriary-button button-icon-text sticky"
+            buttonStyle={{ top: 32 }}
+            icon
+          />
+        )}
+        <div
+          className="hide-scrollbar"
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            // flexWrap: "wrap",
+            alignItems: "center",
+            justifyContent: "flex-start",
+            height: photos.length === 0 ? "auto" : "100vh",
+            overflow: "scroll",
+            scrollSnapType: "y mandatory",
+          }}
+        >
+          {photos.map((photo, index) => (
+            <div key={index} style={{ scrollSnapAlign: "center" }}>
+              <PhotoCard
+                photo={photo}
+                fullscreen={fullscreen}
+                handleShowFullscreen={() =>
+                  handleShowFullscreen(!fullscreen && photo)
+                }
+              />
+            </div>
+          ))}
+        </div>
       </div>
       {fullscreen && (
         <Overlay open={true}>

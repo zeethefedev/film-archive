@@ -1,17 +1,34 @@
-import React from "react";
-import component from "../../style/component.module.css";
+"use client";
 
-function ParallaxSection({ children }) {
+import React, { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+
+function ParallaxSection({ background, foreground }) {
+  const targetRef = useRef();
+
+  const { scrollYProgress } = useScroll({
+    target: targetRef,
+    offset: ["start start", "2 end"],
+    // "start end" means when the start of the target meets the end of the container.
+  });
+
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "-100%"]);
+
   return (
-    <div>
-      <p>Scroll Up and Down this page to see the parallax scrolling effect.</p>
-      <div className={component.parallax}></div>
-      <div>{children}</div>
-      <div style={{ backgroundColor: "red", fontSize: 36 }}>
-        Scroll Up and Down this page to see the parallax scrolling effect. This
-        div is just here to enable scrolling. Tip: Try to remove the
-        background-attachment property to remove the scrolling effect.
+    <div style={{ position: "relative" }}>
+      <div ref={targetRef} style={{ minHeight: "200vh" }}>
+        {background}
       </div>
+      <motion.div
+        style={{
+          height: "100vh",
+          width: "100%",
+          position: "absolute",
+          y,
+        }}
+      >
+        {foreground}
+      </motion.div>
     </div>
   );
 }

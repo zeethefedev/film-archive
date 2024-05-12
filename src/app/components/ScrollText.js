@@ -51,17 +51,25 @@ function ScrollText() {
   ];
 
   return (
-    <HorizontalScrollSection
-      multiple
-      customRef={scrollRef}
-      wrapperStyle={{ width: "70vw", top: 32 }}
-      elementStyle={{ position: "relative", whiteSpace: "nowrap" }}
+    <div
+      style={{
+        padding: "32px 100px",
+        display: "flex",
+        justifyContent: "center",
+      }}
     >
-      {RUNNING_TEXT.map((line, index) => ({
-        element: <LineText stringArray={line.text} imageArray={line.image} />,
-        x: translate[index],
-      }))}
-    </HorizontalScrollSection>
+      <HorizontalScrollSection
+        multiple
+        customRef={scrollRef}
+        wrapperStyle={{ width: "70vw", top: 32, marginBottom: 72 }}
+        elementStyle={{ position: "relative", whiteSpace: "nowrap" }}
+      >
+        {RUNNING_TEXT.map((line, index) => ({
+          element: <LineText stringArray={line.text} imageArray={line.image} />,
+          x: translate[index],
+        }))}
+      </HorizontalScrollSection>
+    </div>
   );
 }
 

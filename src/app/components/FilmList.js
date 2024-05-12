@@ -2,7 +2,6 @@
 
 import React, { useState } from "react";
 import FilmCard from "./FilmCard";
-import component from "../../style/component.module.css";
 import HorizontalScrollSection from "./generics/HorizontalScrollSection";
 
 function FilmList({ films }) {
@@ -20,7 +19,7 @@ function FilmList({ films }) {
     <HorizontalScrollSection
       xTranslate={["0%", "-310%"]}
       bgColor={["#f5f2e4", "#5c0000"]}
-      wrapperStyle={{ top: "20%" }}
+      wrapperStyle={{ height: "70vh", top: "20%" }}
     >
       <div style={{ display: "flex", gap: 24 }}>
         {films.map((film, index) => (
