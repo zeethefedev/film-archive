@@ -7,7 +7,6 @@ function Navbar() {
       <div>Navbar</div>
       <Link href="/">Home</Link>
       <Link href="/film">Film</Link>
-      <Link href="/contact">Contact Me</Link>
     </nav>
   );
 }

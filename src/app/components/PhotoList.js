@@ -6,11 +6,34 @@ import SVGIcon from "./generics/SVGIcon";
 import Overlay from "./generics/Overlay";
 import PhotoListPlaceholder from "./PhotoListPlaceholder";
 
-const PHOTO_LIST = [
-  { id: 1, src: "/thumbnails/thumbnail1.jpg", alt: "film roll" },
-];
+function PhotoCard({ photo, fullscreen, handleShowFullscreen }) {
+  return (
+    <div style={{ height: "100vh", display: "flex", alignItems: "center" }}>
+      <div style={{ position: "relative" }}>
+        <button
+          className="tetriary-button"
+          onClick={handleShowFullscreen}
+          style={{
+            position: "absolute",
+            zIndex: 10,
+            right: 0,
+            bottom: 0,
+          }}
+        >
+          <SVGIcon
+            icon={!fullscreen ? "full-screen" : "full-screen-exit"}
+            fill="white"
+            width="24px"
+            height="24px"
+          />
+        </button>
+        <PhotoViewer fullscreen={fullscreen} photo={fullscreen || photo} />
+      </div>
+    </div>
+  );
+}
 
-function PhotoList({ photos = PHOTO_LIST, description }) {
+function PhotoList({ photos, description }) {
   const [fullscreen, setFullscreen] = useState(false);
 
   const handleShowFullscreen = (photo) => {
@@ -28,36 +51,10 @@ function PhotoList({ photos = PHOTO_LIST, description }) {
     }
   };
 
-  const photoCard = (photo) => {
-    return (
-      <div style={{ height: "100vh", display: "flex", alignItems: "center" }}>
-        <div style={{ position: "relative" }}>
-          <button
-            className="tetriary-button"
-            onClick={() => handleShowFullscreen(!fullscreen && photo)}
-            style={{
-              position: "absolute",
-              zIndex: 10,
-              right: 0,
-              bottom: 0,
-            }}
-          >
-            <SVGIcon
-              icon={!fullscreen ? "full-screen" : "full-screen-exit"}
-              fill="white"
-              width="24px"
-              height="24px"
-            />
-          </button>
-          <PhotoViewer fullscreen={fullscreen} photo={fullscreen || photo} />
-        </div>
-      </div>
-    );
-  };
-
   return (
     <div>
       <div
+        className="hide-scrollbar"
         style={{
           display: "flex",
           flexDirection: "column",
@@ -71,11 +68,26 @@ function PhotoList({ photos = PHOTO_LIST, description }) {
       >
         {photos.map((photo, index) => (
           <div key={index} style={{ scrollSnapAlign: "center" }}>
-            {photoCard(photo)}
+            {/* {photoCard(photo)} */}
+            <PhotoCard
+              photo={photo}
+              fullscreen={fullscreen}
+              handleShowFullscreen={() =>
+                handleShowFullscreen(!fullscreen && photo)
+              }
+            />
           </div>
         ))}
       </div>
-      {fullscreen && <Overlay open={true}>{photoCard(fullscreen)}</Overlay>}
+      {fullscreen && (
+        <Overlay open={true}>
+          <PhotoCard
+            photo={fullscreen}
+            fullscreen={fullscreen}
+            handleShowFullscreen={() => handleShowFullscreen()}
+          />
+        </Overlay>
+      )}
       {(photos.length < 2 || description) && (
         <PhotoListPlaceholder description={description} />
       )}
