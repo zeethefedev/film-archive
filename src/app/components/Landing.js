@@ -9,7 +9,15 @@ async function Landing() {
   return (
     <div>
       {/* <RunningText /> */}
-      <ScrollText />
+      <div
+        style={{
+          padding: "32px 100px",
+          display: "flex",
+          justifyContent: "center",
+        }}
+      >
+        <ScrollText />
+      </div>
       {/* <ParallaxSection><div>children</div></ParallaxSection> */}
       <FilmList films={filmList} />
     </div>

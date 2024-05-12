@@ -69,7 +69,3 @@
   position: absolute;
   z-index: 10;
 }
-
-.cardWrapper {
-  display: flex;
-}

@@ -8,8 +8,10 @@ import PhotoListPlaceholder from "./PhotoListPlaceholder";
 
 function PhotoCard({ photo, fullscreen, handleShowFullscreen }) {
   return (
-    <div style={{ height: "100vh", display: "flex", alignItems: "center" }}>
-      <div style={{ position: "relative" }}>
+    <div style={{ height: "100vh" }}>
+      <div
+        style={{ position: "relative", display: "flex", alignItems: "center" }}
+      >
         <button
           className="tetriary-button"
           onClick={handleShowFullscreen}

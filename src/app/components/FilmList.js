@@ -18,11 +18,11 @@ function FilmList({ films }) {
 
   return (
     <HorizontalScrollSection
-      xTranslate={["1%", "-310%"]}
+      xTranslate={["0%", "-310%"]}
       bgColor={["#f5f2e4", "#5c0000"]}
-      wrapperStyle={{ height: "100vh" }}
+      wrapperStyle={{ top: "20%" }}
     >
-      <div className={component.cardWrapper}>
+      <div style={{ display: "flex", gap: 24 }}>
         {films.map((film, index) => (
           <div
             key={index}

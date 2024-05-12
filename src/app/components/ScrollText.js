@@ -28,6 +28,7 @@ function LineText({ stringArray, imageArray }) {
                 local
                 src={imageArray[index].src}
                 alt={imageArray[index].alt}
+                height="120px"
               />
             </span>
           ))}
@@ -43,7 +44,7 @@ function ScrollText() {
   const { scrollYProgress } = useScroll({ target: scrollRef });
 
   const translate = [
-    useTransform(scrollYProgress, [0, 1], ["1%", "-95%"]),
+    useTransform(scrollYProgress, [0, 1], ["1%", "-55%"]),
     useTransform(scrollYProgress, [0, 1], ["-50%", "-10%"]),
     useTransform(scrollYProgress, [0, 1], ["-100%", "-50%"]),
     useTransform(scrollYProgress, [0, 1], ["-30%", "-5%"]),
@@ -53,7 +54,7 @@ function ScrollText() {
     <HorizontalScrollSection
       multiple
       customRef={scrollRef}
-      wrapperStyle={{ width: "50vw" }}
+      wrapperStyle={{ width: "70vw", top: 32 }}
       elementStyle={{ position: "relative", whiteSpace: "nowrap" }}
     >
       {RUNNING_TEXT.map((line, index) => ({

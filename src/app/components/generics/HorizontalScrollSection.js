@@ -17,13 +17,13 @@ function HorizontalScrollSection({
 
   const { scrollYProgress: horizontalScroll } = useScroll({
     target: targetRef,
-    offset: ["start start", "0.7 end"],
+    offset: ["start -0.1", "0.7 end"],
     // "start end" means when the start of the target meets the end of the container.
   });
 
   const { scrollYProgress: background } = useScroll({
     target: targetRef,
-    offset: ["start 0.2", "start start"],
+    offset: ["start start", "start -0.1"],
   });
 
   const x = useTransform(horizontalScroll, [0, 1], xTranslate);
