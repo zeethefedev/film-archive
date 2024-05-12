@@ -56,7 +56,7 @@ function PhotoList({ photos, description }) {
 
   return (
     <div>
-      <div>
+      <div className="page-layout">
         {photos.length !== 0 && (
           <BackButton
             className="tetriary-button button-icon-text sticky"

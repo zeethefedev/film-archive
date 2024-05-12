@@ -52,11 +52,8 @@ function ScrollText() {
 
   return (
     <div
-      style={{
-        padding: "32px 100px",
-        display: "flex",
-        justifyContent: "center",
-      }}
+      className="page-layout"
+      style={{ display: "flex", justifyContent: "center" }}
     >
       <HorizontalScrollSection
         multiple
