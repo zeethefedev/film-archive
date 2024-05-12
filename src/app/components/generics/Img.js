@@ -37,8 +37,6 @@ function Img(props) {
           alt={alt}
           sizes={width}
           fill
-          placeholder="blur"
-          blurDataURL={src}
           onLoad={() => setImageLoading(false)}
           style={{
             objectFit,

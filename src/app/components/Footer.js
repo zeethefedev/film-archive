@@ -54,35 +54,38 @@ function Footer() {
   return (
     <footer>
       <div className="footer-wrapper">
-        <div className="footer-links-wrapper">
-          {Object.keys(FOOTER_LINKS).map((list) => (
-            <div key={list} className="footer-links-list">
-              <h4 className="footer-heading">{FOOTER_LINKS[list].name}</h4>
-              <div className="body-text footer-links">
-                {FOOTER_LINKS[list].links.map((link, index) => (
-                  <a key={index} href={link.href}>
-                    {link.name}
-                  </a>
-                ))}
+        <div className="footer-content-wrapper">
+          <div className="footer-links-wrapper">
+            {Object.keys(FOOTER_LINKS).map((list) => (
+              <div key={list} className="footer-links-list">
+                <h4 className="footer-heading">{FOOTER_LINKS[list].name}</h4>
+                <div className="body-text footer-links">
+                  {FOOTER_LINKS[list].links.map((link, index) => (
+                    <a key={index} href={link.href}>
+                      {link.name}
+                    </a>
+                  ))}
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
+          <form className="footer-input-wrapper" onSubmit={handleSubmitMessage}>
+            <Input
+              value={message.value}
+              handleChangeValue={handleChangeMessage}
+              required
+              error={message.touched && !message.value}
+            />
+            <button
+              type="submit"
+              className="primary-button-light"
+              disabled={message.touched && !message.value}
+            >
+              submit
+            </button>
+          </form>
         </div>
-        <form className="footer-input-wrapper" onSubmit={handleSubmitMessage}>
-          <Input
-            value={message.value}
-            handleChangeValue={handleChangeMessage}
-            required
-            error={message.touched && !message.value}
-          />
-          <button
-            type="submit"
-            className="primary-button-light"
-            disabled={message.touched && !message.value}
-          >
-            submit
-          </button>
-        </form>
+        <div className="caption">© 2023 Zee the frontend dev</div>
       </div>
     </footer>
   );

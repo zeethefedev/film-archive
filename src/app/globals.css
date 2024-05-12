@@ -322,9 +322,17 @@ footer {
 }
 
 .footer-wrapper {
+  padding: 64px 100px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.footer-content-wrapper {
   display: grid;
   grid-template-columns: 70% 30%;
-  padding: 64px 100px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid rgba(245, 242, 228, 0.5);
 }
 
 .footer-links-wrapper {
