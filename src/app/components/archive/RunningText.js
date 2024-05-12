@@ -1,6 +1,6 @@
 import React from "react";
 import component from "../../style/component.module.css";
-import Img from "./generics/Img";
+import Img from "../generics/Img";
 import "../globals.css";
 
 const RUNNING_TEXT = [
