@@ -1,15 +1,26 @@
-import React from "react";
-import FilmList from "./FilmList";
-import { getFilmList } from "../api/film.api";
-import ScrollText from "./ScrollText";
+"use client";
 
-async function Landing() {
-  const filmList = await getFilmList();
+import React, { useEffect, useState } from "react";
+import FilmList from "./FilmList";
+import ScrollText from "./ScrollText";
+import { BREAKPOINT } from "../utils/constants";
+
+function Landing({ films }) {
+  const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
+
+  const handleResize = () => {
+    setDimensions({ width: window.innerWidth, height: window.innerHeight });
+  };
+
+  useEffect(() => {
+    setDimensions({ width: window.innerWidth, height: window.innerHeight });
+    window.addEventListener("resize", handleResize, false);
+  }, []);
 
   return (
     <div>
-      <ScrollText />
-      <FilmList films={filmList} />
+      <ScrollText isSmall={dimensions.width < BREAKPOINT.MOBILE} />
+      <FilmList films={films} isSmall={dimensions.width < BREAKPOINT.MOBILE} />
     </div>
   );
 }

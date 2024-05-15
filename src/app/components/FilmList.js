@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import FilmCard from "./FilmCard";
 import HorizontalScrollSection from "./generics/HorizontalScrollSection";
 
-function FilmList({ films }) {
+function FilmList({ films, isSmall }) {
   const [activeCard, setActiveCard] = useState();
 
   const handleHoverCard = (film) => {

@@ -1,11 +1,11 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useScroll, useTransform } from "framer-motion";
 
 import "../globals.css";
 import Img from "./generics/Img";
-import { RUNNING_TEXT } from "../utils/constants";
+import { BREAKPOINT, RUNNING_TEXT } from "../utils/constants";
 import HorizontalScrollSection from "./generics/HorizontalScrollSection";
 
 function LineText({ stringArray, imageArray }) {
@@ -38,7 +38,7 @@ function LineText({ stringArray, imageArray }) {
   );
 }
 
-function ScrollText() {
+function ScrollText({ isSmall }) {
   const scrollRef = useRef();
 
   const { scrollYProgress } = useScroll({ target: scrollRef });
@@ -58,7 +58,15 @@ function ScrollText() {
       <HorizontalScrollSection
         multiple
         customRef={scrollRef}
-        wrapperStyle={{ width: "70vw", top: 32, marginBottom: 72 }}
+        wrapperStyle={{
+          width: isSmall ? "90vw" : "70vw",
+          top: 32,
+          marginBottom: 72,
+          minHeight: "80vh",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+        }}
         elementStyle={{ position: "relative", whiteSpace: "nowrap" }}
       >
         {RUNNING_TEXT.map((line, index) => ({

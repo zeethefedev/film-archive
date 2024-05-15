@@ -78,3 +78,10 @@ export const FOOTER_LINKS = {
     ],
   },
 };
+
+export const BREAKPOINT = {
+  MOBILE: 575.98,
+  SMALL: 767.98,
+  MEDIUM: 991.98,
+  LARGE: 1199.98,
+};

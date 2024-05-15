@@ -1,7 +1,11 @@
 import React from "react";
 
 function Loading() {
-  return <div>loading...</div>;
+  return (
+    <div className="main-section-layout">
+      <h2>Loading...</h2>
+    </div>
+  );
 }
 
 export default Loading;
