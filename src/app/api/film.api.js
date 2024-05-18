@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import { getBaseUrl, getFilmData, getFilmUrl } from "./method.api";
+import { dynamicBlurDataUrl } from "../components/generics/blurDataUrl";
 const API_URL = getBaseUrl("draft");
 const REVALIDATE = 60;
 const MAPI_URL = process.env.NEXT_PUBLIC_MAPI_URL;
@@ -16,6 +17,14 @@ export async function getFilmList() {
 
   const data = await res.json();
   const filmListData = await data.stories.map((film) => getFilmData(film));
+
+  const thumbnailBlur = await data.stories.map(
+    async (film, index) =>
+      await dynamicBlurDataUrl(film.content.thumbnail.filename).then((blur) => {
+        filmListData[index].content.thumbnail.blur = blur;
+        // console.log(filmListData[index].content.thumbnail);
+      })
+  );
 
   return filmListData;
 }

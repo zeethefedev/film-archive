@@ -88,6 +88,7 @@ function FilmCard({ film, activeCard }) {
             aspectRatio="7/5"
             src={filmContent.thumbnail.filename}
             alt={filmContent.thumbnail.alt}
+            blur={filmContent.thumbnail.blur}
           />
         </div>
       </div>
