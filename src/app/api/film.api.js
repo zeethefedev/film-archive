@@ -18,11 +18,10 @@ export async function getFilmList() {
   const data = await res.json();
   const filmListData = await data.stories.map((film) => getFilmData(film));
 
-  const thumbnailBlur = await data.stories.map(
+  data.stories.forEach(
     async (film, index) =>
       await dynamicBlurDataUrl(film.content.thumbnail.filename).then((blur) => {
         filmListData[index].content.thumbnail.blur = blur;
-        // console.log(filmListData[index].content.thumbnail);
       })
   );
 
@@ -41,6 +40,13 @@ export async function getFilm(filmName) {
 
   const data = await res.json();
   const filmData = await getFilmData(data.story);
+
+  data.story.content.photos.forEach(
+    async (photo, index) =>
+      await dynamicBlurDataUrl(photo.filename).then((blur) => {
+        filmData.content.photos[index].blur = blur;
+      })
+  );
 
   return filmData;
 }

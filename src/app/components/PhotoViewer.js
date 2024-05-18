@@ -49,6 +49,7 @@ function PhotoViewer({ fullscreen, photo }) {
             <Img
               src={photo.filename}
               alt={photo.alt}
+              blur={photo.blur}
               width={!fullscreen ? "100%" : "auto"}
               height={fullscreen ? "100vh" : "auto"}
               aspectRatio={!fullscreen && "1/1"}
