@@ -3,7 +3,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import Img from "./generics/Img";
 
-function PhotoViewer({ fullscreen, photo }) {
+function PhotoViewer({ fullscreen, photo, isSmall }) {
   const imageRef = useRef();
   const [pos, setPos] = useState({ x: 0, y: 0, scale: 1 });
 
@@ -26,23 +26,24 @@ function PhotoViewer({ fullscreen, photo }) {
   }, [fullscreen]);
 
   return (
-    <div>
+    <div style={{ width: "100%" }}>
       <div>
         <div
           ref={imageRef}
           style={{
-            width: photo.id === fullscreen?.id ? "auto" : "60vw",
-            maxWidth: photo.id === fullscreen?.id ? "none" : 540,
+            width: photo.id === fullscreen?.id || isSmall ? "auto" : "60vw",
+            maxWidth: photo.id === fullscreen?.id || isSmall ? "none" : 540,
             objectFit: "contain",
             overflow: "hidden",
           }}
           onWheelCapture={handleScroll}
         >
           <div
-            className="scrollimgzoom"
             style={{
               width: "100%",
-              transform: `translate(${pos.x}px, ${pos.y}px) scale(${pos.scale})`,
+              transform: isSmall
+                ? "none"
+                : `translate(${pos.x}px, ${pos.y}px) scale(${pos.scale})`,
               transformOrigin: "0 0",
             }}
           >
@@ -51,7 +52,7 @@ function PhotoViewer({ fullscreen, photo }) {
               alt={photo.alt}
               blur={photo.blur}
               width={!fullscreen ? "100%" : "auto"}
-              height={fullscreen ? "100vh" : "auto"}
+              height={fullscreen && !isSmall ? "100vh" : "auto"}
               aspectRatio={!fullscreen && "1/1"}
               objectFit={fullscreen ? "contain" : "cover"}
             />

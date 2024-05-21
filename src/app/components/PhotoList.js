@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import PhotoViewer from "./PhotoViewer";
 import SVGIcon from "./generics/SVGIcon";
 import Overlay from "./generics/Overlay";
@@ -8,8 +8,9 @@ import PhotoListPlaceholder from "./PhotoListPlaceholder";
 import BackButton from "./generics/BackButton";
 
 import component from "../../style/component.module.css";
+import { BREAKPOINT } from "../utils/constants";
 
-function PhotoCard({ photo, fullscreen, handleShowFullscreen }) {
+function PhotoCard({ photo, fullscreen, handleShowFullscreen, isSmall }) {
   return (
     <div className={component.photoCardWrapper}>
       <div
@@ -32,13 +33,28 @@ function PhotoCard({ photo, fullscreen, handleShowFullscreen }) {
             height="24px"
           />
         </button>
-        <PhotoViewer fullscreen={fullscreen} photo={fullscreen || photo} />
+        <PhotoViewer
+          isSmall={isSmall}
+          fullscreen={fullscreen}
+          photo={fullscreen || photo}
+        />
       </div>
     </div>
   );
 }
 
 function PhotoList({ photos, description }) {
+  const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
+
+  const handleResize = () => {
+    setDimensions({ width: window.innerWidth, height: window.innerHeight });
+  };
+
+  useEffect(() => {
+    setDimensions({ width: window.innerWidth, height: window.innerHeight });
+    window.addEventListener("resize", handleResize, false);
+  }, []);
+
   const [fullscreen, setFullscreen] = useState(false);
 
   const handleShowFullscreen = (photo) => {
@@ -62,7 +78,7 @@ function PhotoList({ photos, description }) {
         {photos.length !== 0 && (
           <BackButton
             className="tetriary-button button-icon-text sticky"
-            buttonStyle={{ top: 32 }}
+            buttonStyle={{ top: 32, zIndex: 10 }}
             icon
           />
         )}
@@ -71,8 +87,13 @@ function PhotoList({ photos, description }) {
           className={`hide-scrollbar ${component.photoListWrapper}`}
         >
           {photos.map((photo, index) => (
-            <div key={index} style={{ scrollSnapAlign: "center" }}>
+            <div
+              key={index}
+              style={{ scrollSnapAlign: "center" }}
+              className={component.photoCardOuterWrapper}
+            >
               <PhotoCard
+                isSmall={dimensions.width < BREAKPOINT.MOBILE}
                 photo={photo}
                 fullscreen={fullscreen}
                 handleShowFullscreen={() =>
@@ -86,6 +107,7 @@ function PhotoList({ photos, description }) {
       {fullscreen && (
         <Overlay open={true}>
           <PhotoCard
+            isSmall={dimensions.width < BREAKPOINT.MOBILE}
             photo={fullscreen}
             fullscreen={fullscreen}
             handleShowFullscreen={() => handleShowFullscreen()}

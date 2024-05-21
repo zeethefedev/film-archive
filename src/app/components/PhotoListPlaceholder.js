@@ -1,4 +1,5 @@
 "use client";
+
 import React, { useRef } from "react";
 import { useScroll, useTransform } from "framer-motion";
 import HorizontalScrollSection from "./generics/HorizontalScrollSection";
@@ -23,9 +24,9 @@ function LineText({ text = "No more film photos beyond this line" }) {
 function Description({ description }) {
   return (
     <div
+      className="page-layout"
       style={{
-        // width: "50%",
-        maxWidth: 600,
+        maxWidth: 700,
         margin: "auto",
         display: "flex",
         flexDirection: "column",

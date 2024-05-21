@@ -83,6 +83,7 @@
   overflow: scroll;
   scroll-snap-type: y mandatory;
   height: 100vh;
+  gap: 32px;
 }
 
 .photoCardWrapper {
@@ -90,6 +91,9 @@
 }
 
 @media (max-width: 575.98px) {
+  .photoCardWrapper {
+    width: 100%;
+  }
 }
 
 /* Small devices (landscape phones, less than 768px) */
@@ -107,6 +111,12 @@
   .photoListWrapper {
     overflow: visible;
     height: auto;
+  }
+
+  .photoCardOuterWrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
   }
 
   .photoCardWrapper {
