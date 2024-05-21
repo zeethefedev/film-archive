@@ -56,6 +56,10 @@
 /* custom cursor */
 .filmCardWrapper {
   cursor: none;
+  background-color: black;
+}
+
+.imageCard {
 }
 
 .pointed {
@@ -70,11 +74,44 @@
   z-index: 10;
 }
 
+/* image list */
+.photoListWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  overflow: scroll;
+  scroll-snap-type: y mandatory;
+  height: 100vh;
+}
+
+.photoCardWrapper {
+  height: 100vh;
+}
+
 @media (max-width: 575.98px) {
 }
 
 /* Small devices (landscape phones, less than 768px) */
 @media (max-width: 767.98px) {
+  .imageCard {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .filmCardWrapper {
+    background-color: transparent;
+  }
+
+  .photoListWrapper {
+    overflow: visible;
+    height: auto;
+  }
+
+  .photoCardWrapper {
+    height: auto;
+  }
 }
 
 /* Medium devices (tablets, less than 992px) */

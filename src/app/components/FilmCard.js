@@ -5,6 +5,8 @@ import component from "../../style/component.module.css";
 import { useRouter } from "next/navigation";
 import Img from "./generics/Img";
 
+import { motion } from "framer-motion";
+
 function CustomCursor({ useCustomCursor, cursorRef, text }) {
   const [cursor, setCursor] = useState({ x: 0, y: 0 });
 
@@ -41,7 +43,7 @@ function CustomCursor({ useCustomCursor, cursorRef, text }) {
   );
 }
 
-function FilmCard({ film, activeCard }) {
+function FilmCard({ film, activeCard, isSmall, textColor }) {
   const cursorRef = useRef();
   const [cursorText, setCursorText] = useState();
   const [useCustomCursor, setUseCustomCursor] = useState(false);
@@ -71,25 +73,35 @@ function FilmCard({ film, activeCard }) {
         onMouseEnter={handleHoverImage}
         onMouseLeave={handleReset}
         onClick={handleClickImage}
-        style={{ backgroundColor: "black" }}
       >
-        <CustomCursor
-          useCustomCursor={useCustomCursor}
-          cursorRef={cursorRef}
-          text={cursorText}
-        />
+        {!isSmall && (
+          <CustomCursor
+            useCustomCursor={useCustomCursor}
+            cursorRef={cursorRef}
+            text={cursorText}
+          />
+        )}
         <div
+          className={component.imageCard}
           style={{
             opacity: !activeCard || film.id === activeCard ? 1 : 0.5,
           }}
         >
           <Img
-            width="40vw"
+            width={!isSmall && "40vw"}
             aspectRatio="7/5"
             src={filmContent.thumbnail.filename}
             alt={filmContent.thumbnail.alt}
             blur={filmContent.thumbnail.blur}
           />
+          {isSmall && (
+            <motion.div
+              className="button-text"
+              style={{ textAlign: "center", color: textColor }}
+            >
+              {filmContent.displayName}
+            </motion.div>
+          )}
         </div>
       </div>
     </div>

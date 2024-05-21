@@ -54,6 +54,21 @@ export const RUNNING_TEXT = [
   },
 ];
 
+export const RUNNING_TEXT_MB = [
+  { type: "text", value: "Film is" },
+  { type: "image", src: roll1, alt: "film roll" },
+  { type: "image", src: roll2, alt: "film roll" },
+  { type: "text", value: "not" },
+  { type: "image", src: roll3, alt: "film roll" },
+  { type: "text", value: "dead" },
+  { type: "text", value: "Film" },
+  { type: "image", src: roll4, alt: "film roll" },
+  { type: "text", value: "is" },
+  { type: "image", src: roll6, alt: "film roll" },
+  { type: "image", src: roll7, alt: "film roll" },
+  { type: "text", value: "not dead" },
+];
+
 export const FOOTER_LINKS = {
   frameWorks: {
     name: "Frameworks",

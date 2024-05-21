@@ -6,8 +6,8 @@ import { motion, useScroll, useTransform } from "framer-motion";
 function HorizontalScrollSection({
   customRef,
   children,
-  height = "300vh",
-  xTranslate = ["1%", "-100%"],
+  height,
+  xTranslate = ["0%", "0%"],
   bgColor = ["#f5f2e4", "#f5f2e4"],
   wrapperStyle = {},
   elementStyle = {},
@@ -33,7 +33,7 @@ function HorizontalScrollSection({
     <motion.div
       ref={customRef || targetRef}
       style={{
-        height,
+        height: height || "300vh",
         backgroundColor: bgColor ? backgroundColor : "transparent",
       }}
     >

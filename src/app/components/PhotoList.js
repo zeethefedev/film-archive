@@ -7,9 +7,11 @@ import Overlay from "./generics/Overlay";
 import PhotoListPlaceholder from "./PhotoListPlaceholder";
 import BackButton from "./generics/BackButton";
 
+import component from "../../style/component.module.css";
+
 function PhotoCard({ photo, fullscreen, handleShowFullscreen }) {
   return (
-    <div style={{ height: "100vh" }}>
+    <div className={component.photoCardWrapper}>
       <div
         style={{ position: "relative", display: "flex", alignItems: "center" }}
       >
@@ -65,17 +67,8 @@ function PhotoList({ photos, description }) {
           />
         )}
         <div
-          className="hide-scrollbar"
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            // flexWrap: "wrap",
-            alignItems: "center",
-            justifyContent: "flex-start",
-            height: photos.length === 0 ? "auto" : "100vh",
-            overflow: "scroll",
-            scrollSnapType: "y mandatory",
-          }}
+          style={{ height: photos.length === 0 && "auto" }}
+          className={`hide-scrollbar ${component.photoListWrapper}`}
         >
           {photos.map((photo, index) => (
             <div key={index} style={{ scrollSnapAlign: "center" }}>
