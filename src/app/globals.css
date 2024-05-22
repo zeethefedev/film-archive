@@ -388,9 +388,14 @@ footer {
   justify-content: center;
 }
 
-@media (max-width: 575.98px) {
+/* Medium devices (tablets, less than 992px) */
+@media (max-width: 991.98px) {
   .footer-wrapper {
-    padding: 44px 24px;
+    padding: 64px 64px 32px;
+  }
+
+  .footer-links-wrapper {
+    gap: 24px;
   }
 }
 
@@ -426,13 +431,15 @@ footer {
 
   .footer-links-wrapper {
     display: flex;
-    gap: unset;
+    gap: 8px;
     justify-content: space-between;
   }
 }
 
-/* Medium devices (tablets, less than 992px) */
-@media (max-width: 991.98px) {
+@media (max-width: 575.98px) {
+  .footer-wrapper {
+    padding: 44px 24px;
+  }
 }
 
 /* Large devices (desktops, less than 1200px) */
