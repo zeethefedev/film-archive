@@ -92,10 +92,71 @@
   align-items: center;
 }
 
+/* image slide */
+.slideWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.imageListWrapper {
+  display: flex;
+  width: 80vw;
+  overflow: hidden;
+}
+
+.imageOuterWrapper {
+  min-width: 80vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.imageInnerWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.image {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+.buttonWrapper {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
+
+/* zoom image */
+.zoomImageWrapper {
+  object-fit: contain;
+  overflow: hidden;
+}
+
 @media (max-width: 575.98px) {
   .photoCardWrapper {
     width: 100%;
     display: block;
+  }
+
+  .imageListWrapper {
+    width: 100vw;
+  }
+
+  .imageOuterWrapper {
+    min-width: 100vw;
+  }
+
+  .imageInnerWrapper {
+    display: block;
+  }
+
+  .slideWrapper {
+    flex-direction: column;
   }
 }
 

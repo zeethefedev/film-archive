@@ -19,6 +19,10 @@ export const ICONS = [
     name: "back",
     path: "M13.939 4.939L6.879 12l7.06 7.061 2.122-2.122L11.121 12l4.94-4.939z",
   },
+  {
+    name: "next",
+    path: "M10.707 17.707L16.414 12l-5.707-5.707-1.414 1.414L13.586 12l-4.293 4.293z",
+  },
 ];
 
 export const RUNNING_TEXT = [

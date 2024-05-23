@@ -3,6 +3,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import Img from "./generics/Img";
 
+import component from "../../style/component.module.css";
+
 function PhotoViewer({ fullscreen, photo, isSmall }) {
   const imageRef = useRef();
   const [pos, setPos] = useState({ x: 0, y: 0, scale: 1 });
@@ -26,15 +28,14 @@ function PhotoViewer({ fullscreen, photo, isSmall }) {
   }, [fullscreen]);
 
   return (
-    <div style={{ width: "100%" }}>
+    <div style={{ width: isSmall && "100%" }}>
       <div>
         <div
+          className={component.zoomImageWrapper}
           ref={imageRef}
           style={{
-            width: photo.id === fullscreen?.id || isSmall ? "auto" : "60vw",
-            maxWidth: photo.id === fullscreen?.id || isSmall ? "none" : 540,
-            objectFit: "contain",
-            overflow: "hidden",
+            width: fullscreen || isSmall ? "auto" : "60vw",
+            maxWidth: fullscreen || isSmall ? "none" : 540,
           }}
           onWheelCapture={handleScroll}
         >
@@ -51,8 +52,8 @@ function PhotoViewer({ fullscreen, photo, isSmall }) {
               src={photo.filename}
               alt={photo.alt}
               blur={photo.blur}
-              full={fullscreen}
               width="100%"
+              height={fullscreen && !isSmall && "80vh"}
               aspectRatio={!fullscreen && "1/1"}
               objectFit={fullscreen ? "contain" : "cover"}
             />

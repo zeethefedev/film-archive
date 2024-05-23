@@ -2,42 +2,32 @@
 
 import React, { useEffect, useState } from "react";
 import PhotoViewer from "./PhotoViewer";
-import SVGIcon from "./generics/SVGIcon";
 import Overlay from "./generics/Overlay";
 import PhotoListPlaceholder from "./PhotoListPlaceholder";
 import BackButton from "./generics/BackButton";
 
 import component from "../../style/component.module.css";
 import { BREAKPOINT } from "../utils/constants";
+import ImageSlide from "./ImageSlide";
+import IconButton from "./generics/IconButton";
 
-function PhotoCard({ photo, fullscreen, handleShowFullscreen, isSmall }) {
+function PhotoCard({ photo, handleShowFullscreen, isSmall }) {
   return (
     <div className={component.photoCardWrapper}>
       <div
         style={{ position: "relative", display: "flex", alignItems: "center" }}
       >
-        <button
-          className="tetriary-button"
+        <IconButton
           onClick={handleShowFullscreen}
-          style={{
+          buttonStyle={{
             position: "absolute",
             zIndex: 10,
             right: 0,
             bottom: 0,
           }}
-        >
-          <SVGIcon
-            icon={!fullscreen ? "full-screen" : "full-screen-exit"}
-            fill="white"
-            width="24px"
-            height="24px"
-          />
-        </button>
-        <PhotoViewer
-          isSmall={isSmall}
-          fullscreen={fullscreen}
-          photo={fullscreen || photo}
+          icon="full-screen"
         />
+        <PhotoViewer isSmall={isSmall} photo={photo} />
       </div>
     </div>
   );
@@ -59,7 +49,7 @@ function PhotoList({ photos, description }) {
 
   const handleShowFullscreen = (photo) => {
     const body = document?.getElementsByTagName("body");
-    if (!fullscreen) {
+    if (!fullscreen && fullscreen !== 0) {
       if (body) {
         body[0].style.overflow = "hidden";
       }
@@ -95,21 +85,18 @@ function PhotoList({ photos, description }) {
               <PhotoCard
                 isSmall={dimensions.width < BREAKPOINT.MOBILE}
                 photo={photo}
-                fullscreen={fullscreen}
-                handleShowFullscreen={() =>
-                  handleShowFullscreen(!fullscreen && photo)
-                }
+                handleShowFullscreen={() => handleShowFullscreen(index)}
               />
             </div>
           ))}
         </div>
       </div>
-      {fullscreen && (
+      {(fullscreen || fullscreen === 0) && (
         <Overlay open={true}>
-          <PhotoCard
+          <ImageSlide
             isSmall={dimensions.width < BREAKPOINT.MOBILE}
-            photo={fullscreen}
-            fullscreen={fullscreen}
+            steps={photos}
+            active={fullscreen}
             handleShowFullscreen={() => handleShowFullscreen()}
           />
         </Overlay>
