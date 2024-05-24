@@ -86,6 +86,7 @@ function ScrollText({ isSmall }) {
           multiple
           customRef={scrollRef}
           wrapperClass={component.landingTextWrapper}
+          wrapperStyle={{ top: 32 }}
           elementStyle={{ position: "relative", whiteSpace: "nowrap" }}
         >
           {RUNNING_TEXT.map((line, index) => ({
