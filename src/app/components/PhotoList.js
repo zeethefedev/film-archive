@@ -14,9 +14,7 @@ import IconButton from "./generics/IconButton";
 function PhotoCard({ photo, handleShowFullscreen, isSmall }) {
   return (
     <div className={component.photoCardWrapper}>
-      <div
-        style={{ position: "relative", display: "flex", alignItems: "center" }}
-      >
+      <div className={component.photoCardInnerWrapper}>
         <IconButton
           onClick={handleShowFullscreen}
           buttonStyle={{
@@ -77,11 +75,7 @@ function PhotoList({ photos, description }) {
           className={`hide-scrollbar ${component.photoListWrapper}`}
         >
           {photos.map((photo, index) => (
-            <div
-              key={index}
-              style={{ scrollSnapAlign: "center" }}
-              className={component.photoCardOuterWrapper}
-            >
+            <div key={index} className={component.photoCardOuterWrapper}>
               <PhotoCard
                 isSmall={dimensions.width < BREAKPOINT.MOBILE}
                 photo={photo}

@@ -311,6 +311,11 @@ textarea::placeholder {
   top: 0;
 }
 
+.fixed {
+  position: fixed;
+  top: 0;
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
@@ -335,7 +340,7 @@ footer {
 }
 
 .footer-wrapper {
-  padding: 64px 100px 32px;
+  padding: 64px 100px 80px;
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -391,7 +396,7 @@ footer {
 /* Medium devices (tablets, less than 992px) */
 @media (max-width: 991.98px) {
   .footer-wrapper {
-    padding: 64px 64px 32px;
+    padding: 64px;
   }
 
   .footer-links-wrapper {
@@ -437,8 +442,20 @@ footer {
 }
 
 @media (max-width: 575.98px) {
+  h4 {
+    font-size: 16px;
+  }
+
+  .body-text {
+    font-size: 14px;
+  }
+
   .footer-wrapper {
     padding: 44px 24px;
+  }
+
+  .footer-links {
+    gap: 4px;
   }
 }
 

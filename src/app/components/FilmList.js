@@ -4,6 +4,7 @@ import React, { useRef, useState } from "react";
 import FilmCard from "./FilmCard";
 import HorizontalScrollSection from "./generics/HorizontalScrollSection";
 import { useScroll, useTransform } from "framer-motion";
+import component from "../../style/component.module.css";
 
 function FilmList({ films, isSmall }) {
   const [activeCard, setActiveCard] = useState();
@@ -26,15 +27,7 @@ function FilmList({ films, isSmall }) {
     <div ref={targetRef}>
       {isSmall ? (
         <HorizontalScrollSection bgColor={["#f5f2e4", "#5c0000"]} height="auto">
-          <div
-            className="page-layout"
-            style={{
-              display: "flex",
-              gap: 24,
-              flexDirection: "column",
-              marginTop: 120,
-            }}
-          >
+          <div className={`page-layout ${component.filmListWrapper}`}>
             {films.map((film, index) => (
               <FilmCard
                 key={index}
@@ -50,9 +43,10 @@ function FilmList({ films, isSmall }) {
         <HorizontalScrollSection
           xTranslate={["0%", "-310%"]}
           bgColor={["#f5f2e4", "#5c0000"]}
-          wrapperStyle={{ height: "70vh", top: "20%" }}
+          wrapperClass={component.filmListOuterWrapper}
+          wrapperStyle={{ top: "20%" }}
         >
-          <div style={{ display: "flex", gap: 24 }}>
+          <div className={component.filmListWrapper}>
             {films.map((film, index) => (
               <div
                 key={index}

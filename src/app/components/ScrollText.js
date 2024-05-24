@@ -8,6 +8,8 @@ import Img from "./generics/Img";
 import { RUNNING_TEXT, RUNNING_TEXT_MB } from "../utils/constants";
 import HorizontalScrollSection from "./generics/HorizontalScrollSection";
 
+import component from "../../style/component.module.css";
+
 function LineText({ stringArray, imageArray }) {
   return (
     <div id="container" style={{ display: "flex" }}>
@@ -46,7 +48,7 @@ function ScrollText({ isSmall }) {
   const translate = [
     useTransform(scrollYProgress, [0, 1], ["1%", "-55%"]),
     useTransform(scrollYProgress, [0, 1], ["-50%", "-10%"]),
-    useTransform(scrollYProgress, [0, 1], ["-100%", "-50%"]),
+    useTransform(scrollYProgress, [0, 1], ["-80%", "0%"]),
     useTransform(scrollYProgress, [0, 1], ["-30%", "-5%"]),
   ];
 
@@ -56,45 +58,34 @@ function ScrollText({ isSmall }) {
       style={{ display: "flex", justifyContent: "center" }}
     >
       {isSmall ? (
-        <span
-          className="landing-text"
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            alignItems: "center",
-            justifyContent: "space-between",
-            alignContent: "center",
-            flexWrap: "wrap",
-            gap: 8,
-            height: "100vh",
-          }}
-        >
-          {RUNNING_TEXT_MB.map((item, index) => (
-            <span
-              key={index}
-              style={{ maxHeight: 100, display: "flex", alignItems: "center" }}
-            >
-              {item.type === "text" ? (
-                <span>{item.value}</span>
-              ) : (
-                <Img local src={item.src} alt={item.alt} width="70" />
-              )}
-            </span>
+        <span className={`landing-text ${component.landingTextWrapper}`}>
+          {RUNNING_TEXT_MB.map((line, i) => (
+            <div key={i} className={component.landingTextLine}>
+              {line.map((item, index) => (
+                <span
+                  key={index}
+                  style={{
+                    maxHeight: 100,
+                    display: "flex",
+                    alignItems: "center",
+                    whiteSpace: "nowrap",
+                  }}
+                >
+                  {item.type === "text" ? (
+                    <span>{item.value}</span>
+                  ) : (
+                    <Img local src={item.src} alt={item.alt} width="70" />
+                  )}
+                </span>
+              ))}
+            </div>
           ))}
         </span>
       ) : (
         <HorizontalScrollSection
           multiple
           customRef={scrollRef}
-          wrapperStyle={{
-            width: "70vw",
-            top: 32,
-            marginBottom: 72,
-            minHeight: "80vh",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-          }}
+          wrapperClass={component.landingTextWrapper}
           elementStyle={{ position: "relative", whiteSpace: "nowrap" }}
         >
           {RUNNING_TEXT.map((line, index) => ({

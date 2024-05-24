@@ -10,6 +10,7 @@ function HorizontalScrollSection({
   xTranslate = ["0%", "0%"],
   bgColor = ["#f5f2e4", "#f5f2e4"],
   wrapperStyle = {},
+  wrapperClass = "",
   elementStyle = {},
   multiple,
 }) {
@@ -38,7 +39,10 @@ function HorizontalScrollSection({
       }}
     >
       {multiple ? (
-        <div className="sticky" style={{ overflow: "hidden", ...wrapperStyle }}>
+        <div
+          className={`sticky ${wrapperClass}`}
+          style={{ overflow: "hidden", ...wrapperStyle }}
+        >
           {children.map((child, index) => (
             <motion.div key={index} style={{ x: child.x, ...elementStyle }}>
               {child.element}
@@ -47,7 +51,10 @@ function HorizontalScrollSection({
           {/* const children = [ { element, x } ]; */}
         </div>
       ) : (
-        <div className="sticky" style={{ overflow: "hidden", ...wrapperStyle }}>
+        <div
+          className={`sticky ${wrapperClass}`}
+          style={{ overflow: "hidden", ...wrapperStyle }}
+        >
           <motion.div style={{ x }}>{children}</motion.div>
         </div>
       )}

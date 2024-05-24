@@ -39,6 +39,16 @@
   gap: 28px;
 }
 
+.landingTextWrapper {
+  width: 70vw;
+  top: 32px;
+  margin-bottom: 72px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 /* parallax */
 .parallax {
   background-image: url("https://www.w3schools.com/howto/img_parallax.jpg");
@@ -51,6 +61,16 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+/* film list */
+.filmListOuterWrapper {
+  height: 70vh;
+}
+
+.filmListWrapper {
+  display: flex;
+  gap: 32px;
 }
 
 /* custom cursor */
@@ -69,27 +89,37 @@
   border-radius: 50%;
 }
 
+/* custom cursor */
 .customCursor {
   position: absolute;
   z-index: 10;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--beige);
 }
 
 /* image list */
-.photoListWrapper {
+.photoListWrapper,
+.photoCardWrapper {
+  height: 90vh;
   display: flex;
-  flex-direction: column;
   align-items: center;
+}
+
+.photoCardInnerWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.photoListWrapper {
+  flex-direction: column;
   justify-content: flex-start;
   overflow: scroll;
   scroll-snap-type: y mandatory;
-  height: 100vh;
   gap: 32px;
-}
-
-.photoCardWrapper {
-  height: 100vh;
-  display: flex;
-  align-items: center;
 }
 
 /* image slide */
@@ -128,7 +158,8 @@
 .buttonWrapper {
   display: flex;
   width: 100%;
-  justify-content: space-around;
+  justify-content: space-between;
+  padding: 24px 24px 0px;
 }
 
 /* zoom image */
@@ -137,7 +168,36 @@
   overflow: hidden;
 }
 
+@media (max-width: 991.98px) {
+  .landingTextWrapper {
+    width: 80vw;
+  }
+}
+
 @media (max-width: 575.98px) {
+  .landingTextWrapper {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    align-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    height: 100vh;
+    width: 100%;
+  }
+
+  .landingTextLine {
+    display: flex;
+    gap: 8px;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .filmListWrapper {
+    flex-direction: column;
+    margin-top: 120px;
+  }
+
   .photoCardWrapper {
     width: 100%;
     display: block;
@@ -162,6 +222,10 @@
 
 /* Small devices (landscape phones, less than 768px) */
 @media (max-width: 767.98px) {
+  .filmListWrapper {
+    gap: 24px;
+  }
+
   .imageCard {
     display: flex;
     flex-direction: column;
@@ -181,6 +245,7 @@
     width: 100%;
     display: flex;
     justify-content: center;
+    scroll-snap-align: center;
   }
 
   .photoCardWrapper {
@@ -194,4 +259,21 @@
 
 /* Large devices (desktops, less than 1200px) */
 @media (max-width: 1199.98px) {
+}
+
+@media (orientation: landscape) {
+}
+
+@media (orientation: portrait) {
+  @media (max-width: 1199.98px) {
+    .filmListOuterWrapper {
+      padding-top: 200px;
+    }
+  }
+
+  @media (max-width: 767.98px) {
+    .filmListOuterWrapper {
+      padding-top: 120px;
+    }
+  }
 }
