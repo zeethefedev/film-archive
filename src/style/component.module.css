@@ -268,11 +268,28 @@
     .filmListOuterWrapper {
       padding-top: 200px;
     }
+    .imageListWrapper {
+      width: 85vw;
+    }
+
+    .imageOuterWrapper {
+      min-width: 85vw;
+    }
   }
 
   @media (max-width: 767.98px) {
     .filmListOuterWrapper {
       padding-top: 120px;
+    }
+  }
+
+  @media (max-width: 575.98px) {
+    .imageListWrapper {
+      width: 100vw;
+    }
+
+    .imageOuterWrapper {
+      min-width: 100vw;
     }
   }
 }

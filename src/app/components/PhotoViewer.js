@@ -27,16 +27,55 @@ function PhotoViewer({ fullscreen, photo, isSmall }) {
     if (!fullscreen) setPos({ x: 0, y: 0, scale: 1 });
   }, [fullscreen]);
 
+  const [orientation, setOrientation] = useState();
+
+  const handleChangeOrientation = (e) => {
+    const portrait = e.matches;
+
+    if (portrait) {
+      setOrientation("portrait");
+    } else {
+      setOrientation("landscape");
+    }
+  };
+
+  useEffect(() => {
+    setOrientation(
+      window.matchMedia("(orientation: portrait)").matches
+        ? "portrait"
+        : "landscape"
+    );
+
+    window
+      .matchMedia("(orientation: portrait)")
+      .addEventListener("change", handleChangeOrientation, false);
+  }, []);
+
+  const width = () => {
+    if (fullscreen || isSmall) {
+      return "auto";
+    } else return "60vw";
+  };
+
+  const maxWidth = () => {
+    if (fullscreen || isSmall) return "none";
+    else return 540;
+  };
+
+  const imageHeight = () => {
+    if (fullscreen && !isSmall) {
+      if (orientation === "portrait") return "42vh";
+      else return "80vh";
+    } else return;
+  };
+
   return (
     <div style={{ width: isSmall && "100%" }}>
       <div>
         <div
           className={component.zoomImageWrapper}
           ref={imageRef}
-          style={{
-            width: fullscreen || isSmall ? "auto" : "60vw",
-            maxWidth: fullscreen || isSmall ? "none" : 540,
-          }}
+          style={{ width: width(), maxWidth: maxWidth() }}
           onWheelCapture={handleScroll}
         >
           <div
@@ -53,7 +92,7 @@ function PhotoViewer({ fullscreen, photo, isSmall }) {
               alt={photo.alt}
               blur={photo.blur}
               width="100%"
-              height={fullscreen && !isSmall && "80vh"}
+              height={imageHeight()}
               aspectRatio={!fullscreen && "1/1"}
               objectFit={fullscreen ? "contain" : "cover"}
             />
