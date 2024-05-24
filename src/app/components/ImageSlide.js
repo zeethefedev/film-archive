@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import PhotoViewer from "./PhotoViewer";
 
 import component from "../../style/component.module.css";
@@ -51,6 +51,31 @@ function ImageSlide({
   const handleStep = (step) => () => {
     setActiveStep(step);
   };
+
+  const [pressed, setPressed] = useState(false);
+  const handleKeyEvent = (event) => {
+    setPressed(true);
+    if (event.code === "ArrowRight") {
+      handleNext();
+    }
+    if (event.code === "ArrowLeft") {
+      if (activeStep !== 0) handleBack();
+    }
+  };
+
+  const handleResetKeyEvent = () => {
+    setPressed(false);
+  };
+
+  useEffect(() => {
+    window.addEventListener("keydown", handleKeyEvent);
+    window.addEventListener("keyup", handleResetKeyEvent);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyEvent);
+      window.removeEventListener("keyup", handleResetKeyEvent);
+    };
+  }, [pressed]);
 
   return (
     <div className={component.slideWrapper} style={{ ...wrapperStyle }}>
