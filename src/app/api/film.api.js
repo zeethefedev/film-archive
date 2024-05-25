@@ -66,6 +66,7 @@ export async function postMessage(message) {
     },
   };
 
+  let submitted = false;
   const res = await fetch(MAPI_URL, {
     headers: {
       Authorization: AUTH_TOKEN,
@@ -80,6 +81,7 @@ export async function postMessage(message) {
   }
 
   const data = await res.json();
+  submitted = await res.ok;
 
-  return data;
+  return { data, submitted };
 }

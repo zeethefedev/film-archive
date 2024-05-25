@@ -66,7 +66,11 @@ function PhotoList({ photos, description }) {
         {photos.length !== 0 && (
           <BackButton
             className="tetriary-button button-icon-text sticky"
-            buttonStyle={{ top: 32, zIndex: 10 }}
+            buttonStyle={{
+              top: 32,
+              zIndex: 10,
+              backgroundColor: "rgba(245, 242, 228, 0.5)",
+            }}
             icon
           />
         )}

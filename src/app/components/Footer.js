@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FOOTER_LINKS } from "../utils/constants";
 import { postMessage } from "../api/film.api";
 
@@ -13,8 +13,22 @@ function Input(props) {
     required,
     disabled,
     error,
-    helpertext = "Please fill in your message",
+    helpertext = "",
+    submitted,
   } = props;
+
+  const [helpertextState, setHelpertextState] = useState(helpertext);
+
+  useEffect(() => {
+    if (error) {
+      setHelpertextState("Please fill in your message");
+    } else if (submitted) {
+      setHelpertextState("Your message has been submitted");
+    } else {
+      setHelpertextState("");
+    }
+  }, [error, submitted]);
+
   return (
     <div className="input-wrapper">
       <label>
@@ -30,24 +44,30 @@ function Input(props) {
           onChange={handleChangeValue}
         />
       </label>
-      {error && <div className="caption">{helpertext}</div>}
+      {helpertextState && <div className="caption">{helpertextState}</div>}
     </div>
   );
 }
 
 function Footer() {
   const [message, setMessage] = useState({ value: "", touched: false });
-
+  const [submittedMessage, setSubmittedMessage] = useState(false);
   const handleChangeMessage = (event) => {
+    setSubmittedMessage(false);
     setMessage({ value: event.target.value, touched: true });
   };
 
-  const handleSubmitMessage = (e) => {
+  const handleSubmitMessage = async (e) => {
     e.preventDefault();
     setMessage({ ...message, touched: true });
     if (message.value.trim()) {
-      console.log(message);
-      postMessage(message.value.trim());
+      const { data, submitted } = await postMessage(message.value.trim());
+      setSubmittedMessage(submitted);
+
+      // reset
+      if (submitted) {
+        setMessage({ value: "", touched: false });
+      }
     }
   };
 
@@ -73,13 +93,13 @@ function Footer() {
             <Input
               value={message.value}
               handleChangeValue={handleChangeMessage}
-              required
-              error={message.touched && !message.value}
+              error={message.touched && !message.value.trim()}
+              submitted={submittedMessage}
             />
             <button
               type="submit"
               className="primary-button-light"
-              disabled={message.touched && !message.value}
+              disabled={message.touched && !message.value.trim()}
             >
               submit
             </button>
