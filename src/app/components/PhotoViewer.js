@@ -3,8 +3,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import Img from "./generics/Img";
 
-import component from "../../style/component.module.css";
-
 function PhotoViewer({ fullscreen, photo, isSmall }) {
   const imageRef = useRef();
   const [pos, setPos] = useState({ x: 0, y: 0, scale: 1 });
@@ -73,7 +71,7 @@ function PhotoViewer({ fullscreen, photo, isSmall }) {
     <div style={{ width: isSmall && "100%" }}>
       <div>
         <div
-          className={component.zoomImageWrapper}
+          className="object-contain	overflow-hidden"
           ref={imageRef}
           style={{ width: width(), maxWidth: maxWidth() }}
           onWheelCapture={handleScroll}

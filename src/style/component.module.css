@@ -81,34 +81,10 @@
 .imageCard {
 }
 
-.pointed {
-  width: 7px;
-  height: 7px;
-  background-color: var(--beige);
-  border-radius: 50%;
-}
-
-/* custom cursor */
-.customCursor {
-  position: absolute;
-  z-index: 10;
-  white-space: nowrap;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  color: var(--beige);
-}
-
 /* image list */
 .photoListWrapper,
 .photoCardWrapper {
   height: 90vh;
-  display: flex;
-  align-items: center;
-}
-
-.photoCardInnerWrapper {
-  position: relative;
   display: flex;
   align-items: center;
 }
@@ -148,23 +124,11 @@
   justify-content: center;
 }
 
-.image {
-  display: flex;
-  align-items: flex-end;
-  justify-content: flex-end;
-}
-
 .buttonWrapper {
   display: flex;
   width: 100%;
   justify-content: space-between;
   padding: 24px 24px 0px;
-}
-
-/* zoom image */
-.zoomImageWrapper {
-  object-fit: contain;
-  overflow: hidden;
 }
 
 @media (max-width: 991.98px) {
@@ -183,13 +147,6 @@
     gap: 8px;
     height: 100vh;
     width: 100%;
-  }
-
-  .landingTextLine {
-    display: flex;
-    gap: 8px;
-    width: 100%;
-    justify-content: space-between;
   }
 
   .filmListWrapper {

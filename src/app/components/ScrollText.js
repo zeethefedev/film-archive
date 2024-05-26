@@ -16,13 +16,13 @@ function LineText({ stringArray, imageArray }) {
       {[1, 2].map((i, index) => (
         <span id="line" key={index} className="flex landing-text">
           {stringArray.map((string, index) => (
-            <span className="flex align-center gap-7" key={index}>
+            <span className="flex items-center gap-7" key={index}>
               {string}
               <Img
                 local
                 src={imageArray[index].src}
                 alt={imageArray[index].alt}
-                // height="120px"
+                height="120px"
                 width="100px"
               />
             </span>
@@ -50,7 +50,7 @@ function ScrollText({ isSmall }) {
       {isSmall ? (
         <span className={`landing-text ${component.landingTextWrapper}`}>
           {RUNNING_TEXT_MB.map((line, i) => (
-            <div key={i} className={component.landingTextLine}>
+            <div key={i} className="flex gap-2 w-full justify-between">
               {line.map((item, index) => (
                 <span
                   key={index}

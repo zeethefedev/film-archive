@@ -108,7 +108,7 @@ function ImageSlide({ steps, active = 0, isSmall, handleShowFullscreen }) {
             }}
           >
             <div className={component.imageInnerWrapper}>
-              <div className={component.image}>
+              <div className="flex items-end justify-end">
                 <PhotoViewer isSmall={isSmall} fullscreen photo={step} />
                 <IconButton
                   onClick={handleShowFullscreen}

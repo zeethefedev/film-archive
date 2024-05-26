@@ -19,7 +19,7 @@ function LineText({ text = "No more film photos beyond this line" }) {
 
 function Description({ description }) {
   return (
-    <div className="page-layout max-w-2xl m-auto flex flex-column gap-8 align-center text-center">
+    <div className="page-layout max-w-2xl m-auto flex flex-column gap-8 items-center text-center">
       <h3>{description}</h3>
       <BackButton text="back to home" />
     </div>
@@ -41,7 +41,7 @@ function PhotoListPlaceholder(props) {
   return (
     <HorizontalScrollSection
       multiple
-      wrapperClass="w-full h-screen flex flex-col	justify-between	align-center m-auto"
+      wrapperClass="w-full h-screen flex flex-col	justify-between	items-center m-auto"
     >
       {translate.map((x, index) => ({
         element:

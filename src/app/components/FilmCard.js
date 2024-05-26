@@ -25,12 +25,17 @@ function CustomCursor({ useCustomCursor, cursorRef, text }) {
     window.addEventListener("mousemove", moveCursor);
   }, []);
 
+  const customCursorClass =
+    "absolute z-10 whitespace-nowrap flex items-center gap-1 beige";
+
+  const pointedClass = "w-2 h-2 bg-beige rounded-full";
+
   return (
     <div
-      className={`cursor ${useCustomCursor && component.customCursor}`}
+      className={`cursor ${useCustomCursor ? customCursorClass : ""}`}
       style={{ transform: `translate3d(${cursor.x}px, ${cursor.y}px, 0)` }}
     >
-      <div className={`${useCustomCursor && component.pointed}`}></div>
+      <div className={`${useCustomCursor ? pointedClass : ""}`}></div>
       <div>{text}</div>
     </div>
   );

@@ -14,7 +14,7 @@ import IconButton from "./generics/IconButton";
 function PhotoCard({ photo, handleShowFullscreen, isSmall }) {
   return (
     <div className={component.photoCardWrapper}>
-      <div className={component.photoCardInnerWrapper}>
+      <div className="relative flex items-center">
         <IconButton
           onClick={handleShowFullscreen}
           className="absolute z-10 right-0 bottom-0"

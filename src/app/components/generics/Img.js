@@ -23,7 +23,7 @@ function Img(props) {
 
   return (
     <div
-      className="relative"
+      className="relative flex items-center"
       style={{
         width,
         height,

@@ -88,6 +88,31 @@
   margin: 0;
 }
 
+/* custom color */
+.red {
+  color: var(--red);
+}
+
+.red-dark {
+  color: var(--red-dark);
+}
+
+.red-light {
+  color: var(--red-light);
+}
+
+.beige {
+  color: var(--beige);
+}
+
+.bg-beige {
+  background-color: var(--beige);
+}
+
+.overlay-background {
+  color: var(--overlay);
+}
+
 html,
 body {
   max-width: 100vw;
