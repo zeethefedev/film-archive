@@ -62,7 +62,6 @@ function RunningText() {
               className={`landing-text ${
                 component.horizontalScrollingWrapper
               } ${index === 1 ? component.marquee2 : ""}`}
-              // style={{ left: line.left }}
             >
               {text(line.text, line.image)}
             </div>

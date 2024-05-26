@@ -16,7 +16,12 @@ function IconButton(props) {
       onClick={onClick}
       style={buttonStyle}
     >
-      <SVGIcon icon={icon} fill="white" width="24px" height="24px" />
+      <SVGIcon
+        icon={icon}
+        fill={disabled ? "rgba(245, 242, 228, 0.5)" : "white"}
+        width="24px"
+        height="24px"
+      />
     </button>
   );
 }
