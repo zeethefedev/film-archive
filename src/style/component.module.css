@@ -203,7 +203,8 @@
   }
 
   .imageListWrapper {
-    width: 100vw;
+    width: auto;
+    overflow: visible;
   }
 
   .imageOuterWrapper {
@@ -215,7 +216,9 @@
   }
 
   .slideWrapper {
-    flex-direction: column;
+    display: block;
+    overflow: scroll;
+    cursor: grab;
   }
 }
 
@@ -285,7 +288,8 @@
 
   @media (max-width: 575.98px) {
     .imageListWrapper {
-      width: 100vw;
+      width: auto;
+      overflow: visible;
     }
 
     .imageOuterWrapper {

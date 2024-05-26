@@ -1,10 +1,11 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import PhotoViewer from "./PhotoViewer";
 
 import component from "../../style/component.module.css";
 import IconButton from "./generics/IconButton";
+import { motion } from "framer-motion";
 
 function ImageSlide({
   steps,
@@ -52,6 +53,7 @@ function ImageSlide({
     setActiveStep(step);
   };
 
+  //arrow left/right trigger - should remove this for mobile
   const [pressed, setPressed] = useState(false);
   const handleKeyEvent = (event) => {
     setPressed(true);
@@ -77,8 +79,22 @@ function ImageSlide({
     };
   }, [pressed]);
 
+  //drag animation
+  const blogList = useRef();
+  const [width, setWidth] = useState(0);
+
+  useEffect(() => {
+    const blogListWidth =
+      blogList.current.scrollWidth - blogList.current.offsetWidth;
+    setWidth(blogListWidth);
+  }, []);
+
   return (
-    <div className={component.slideWrapper} style={{ ...wrapperStyle }}>
+    <motion.div
+      className={`hide-scrollbar ${component.slideWrapper}`}
+      style={wrapperStyle}
+      ref={blogList}
+    >
       {!isSmall && (
         <IconButton
           disabled={activeStep === 0}
@@ -86,13 +102,18 @@ function ImageSlide({
           icon="back"
         />
       )}
-      <div className={component.imageListWrapper} style={imageWrapperStyle}>
+      <motion.div
+        className={component.imageListWrapper}
+        style={imageWrapperStyle}
+        drag="x"
+        dragConstraints={{ right: 0, left: -width }}
+      >
         {steps.map((step, index) => (
           <div
             className={component.imageOuterWrapper}
             key={index}
             style={{
-              translate: `${-100 * activeStep}%`,
+              translate: isSmall ? "none" : `${-100 * activeStep}%`,
               transition: "all 300ms ease-in-out",
               ...imageStyle,
             }}
@@ -109,19 +130,9 @@ function ImageSlide({
             </div>
           </div>
         ))}
-      </div>
+      </motion.div>
       {!isSmall && <IconButton onClick={handleNext} icon="next" />}
-      {isSmall && (
-        <div className={component.buttonWrapper}>
-          <IconButton
-            disabled={activeStep === 0}
-            onClick={handleBack}
-            icon="back"
-          />
-          <IconButton onClick={handleNext} icon="next" />
-        </div>
-      )}
-    </div>
+    </motion.div>
   );
 }
 
