@@ -40,8 +40,8 @@ function ScrollText({ isSmall }) {
 
   const translate = [
     useTransform(scrollYProgress, [0, 1], ["1%", "-55%"]),
-    useTransform(scrollYProgress, [0, 1], ["-50%", "-10%"]),
-    useTransform(scrollYProgress, [0, 1], ["-80%", "0%"]),
+    useTransform(scrollYProgress, [0, 1], ["-20%", "-10%"]),
+    useTransform(scrollYProgress, [0, 1], ["-30%", "0%"]),
     useTransform(scrollYProgress, [0, 1], ["-30%", "-5%"]),
   ];
 
@@ -70,7 +70,7 @@ function ScrollText({ isSmall }) {
         <HorizontalScrollSection
           multiple
           customRef={scrollRef}
-          wrapperClass={`${component.landingTextWrapper} top-8`}
+          wrapperClass={`top-8 ${component.landingTextWrapper}`}
           elementClass="relative whitespace-nowrap"
         >
           {RUNNING_TEXT.map((line, index) => ({
