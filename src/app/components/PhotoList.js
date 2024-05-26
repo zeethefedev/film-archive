@@ -17,12 +17,7 @@ function PhotoCard({ photo, handleShowFullscreen, isSmall }) {
       <div className={component.photoCardInnerWrapper}>
         <IconButton
           onClick={handleShowFullscreen}
-          buttonStyle={{
-            position: "absolute",
-            zIndex: 10,
-            right: 0,
-            bottom: 0,
-          }}
+          className="absolute z-10 right-0 bottom-0"
           icon="full-screen"
         />
         <PhotoViewer isSmall={isSmall} photo={photo} />
@@ -65,12 +60,7 @@ function PhotoList({ photos, description }) {
       <div className="page-layout">
         {photos.length !== 0 && (
           <BackButton
-            className="tetriary-button button-icon-text sticky"
-            buttonStyle={{
-              top: 32,
-              zIndex: 10,
-              backgroundColor: "rgba(245, 242, 228, 0.5)",
-            }}
+            className="tetriary-button button-icon-text sticky top-8 z-10 bg-[rgba(245, 242, 228, 0.5)]"
             icon
           />
         )}

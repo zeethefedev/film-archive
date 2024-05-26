@@ -23,8 +23,8 @@ function Img(props) {
 
   return (
     <div
+      className="relative"
       style={{
-        position: "relative",
         width,
         height,
         aspectRatio: aspectRatio || ratio,

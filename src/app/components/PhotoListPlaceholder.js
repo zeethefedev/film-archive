@@ -7,13 +7,9 @@ import BackButton from "./generics/BackButton";
 
 function LineText({ text = "No more film photos beyond this line" }) {
   return (
-    <div style={{ display: "flex", gap: 28 }}>
+    <div className="flex gap-7">
       {[1, 2].map((i, index) => (
-        <span
-          key={index}
-          className="landing-text"
-          style={{ whiteSpace: "nowrap" }}
-        >
+        <span key={index} className="landing-text whitespace-nowrap">
           {text}
         </span>
       ))}
@@ -23,18 +19,7 @@ function LineText({ text = "No more film photos beyond this line" }) {
 
 function Description({ description }) {
   return (
-    <div
-      className="page-layout"
-      style={{
-        maxWidth: 700,
-        margin: "auto",
-        display: "flex",
-        flexDirection: "column",
-        gap: 32,
-        alignItems: "center",
-        textAlign: "center",
-      }}
-    >
+    <div className="page-layout max-w-2xl m-auto flex flex-column gap-8 align-center text-center">
       <h3>{description}</h3>
       <BackButton text="back to home" />
     </div>
@@ -56,15 +41,7 @@ function PhotoListPlaceholder(props) {
   return (
     <HorizontalScrollSection
       multiple
-      wrapperStyle={{
-        width: "100%",
-        height: "100vh",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "space-between",
-        alignItems: "center",
-        margin: "auto",
-      }}
+      wrapperClass="w-full h-screen flex flex-col	justify-between	align-center m-auto"
     >
       {translate.map((x, index) => ({
         element:

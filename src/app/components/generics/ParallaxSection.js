@@ -15,18 +15,11 @@ function ParallaxSection({ background, foreground }) {
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "-100%"]);
 
   return (
-    <div style={{ position: "relative" }}>
+    <div className="relative">
       <div ref={targetRef} style={{ minHeight: "200vh" }}>
         {background}
       </div>
-      <motion.div
-        style={{
-          height: "100vh",
-          width: "100%",
-          position: "absolute",
-          y,
-        }}
-      >
+      <motion.div className="h-screen w-full absolute" style={{ y }}>
         {foreground}
       </motion.div>
     </div>

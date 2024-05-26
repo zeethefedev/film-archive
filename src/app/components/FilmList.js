@@ -43,8 +43,7 @@ function FilmList({ films, isSmall }) {
         <HorizontalScrollSection
           xTranslate={["0%", "-310%"]}
           bgColor={["#f5f2e4", "#5c0000"]}
-          wrapperClass={component.filmListOuterWrapper}
-          wrapperStyle={{ top: "20%" }}
+          wrapperClass={`${component.filmListOuterWrapper} top-[20%]`}
         >
           <div className={component.filmListWrapper}>
             {films.map((film, index) => (

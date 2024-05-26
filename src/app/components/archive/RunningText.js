@@ -53,7 +53,7 @@ function RunningText() {
   };
 
   return (
-    <div style={{ overflowX: "hidden" }}>
+    <div className="overflow-x-hidden">
       {RUNNING_TEXT.map((line, index) => (
         <div key={index} className={component.container}>
           {[1, 2].map((i, index) => (

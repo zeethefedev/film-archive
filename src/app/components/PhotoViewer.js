@@ -79,8 +79,8 @@ function PhotoViewer({ fullscreen, photo, isSmall }) {
           onWheelCapture={handleScroll}
         >
           <div
+            className="w-full"
             style={{
-              width: "100%",
               transform: isSmall
                 ? "none"
                 : `translate(${pos.x}px, ${pos.y}px) scale(${pos.scale})`,

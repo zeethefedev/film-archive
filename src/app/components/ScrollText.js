@@ -12,19 +12,11 @@ import component from "../../style/component.module.css";
 
 function LineText({ stringArray, imageArray }) {
   return (
-    <div id="container" style={{ display: "flex" }}>
+    <div id="container" className="flex">
       {[1, 2].map((i, index) => (
-        <span
-          id="line"
-          key={index}
-          className="landing-text"
-          style={{ display: "flex" }}
-        >
+        <span id="line" key={index} className="flex landing-text">
           {stringArray.map((string, index) => (
-            <span
-              style={{ display: "flex", alignItems: "center", gap: 28 }}
-              key={index}
-            >
+            <span className="flex align-center gap-7" key={index}>
               {string}
               <Img
                 local
@@ -54,10 +46,7 @@ function ScrollText({ isSmall }) {
   ];
 
   return (
-    <div
-      className="page-layout"
-      style={{ display: "flex", justifyContent: "center" }}
-    >
+    <div className="page-layout flex justify-center">
       {isSmall ? (
         <span className={`landing-text ${component.landingTextWrapper}`}>
           {RUNNING_TEXT_MB.map((line, i) => (
@@ -65,12 +54,7 @@ function ScrollText({ isSmall }) {
               {line.map((item, index) => (
                 <span
                   key={index}
-                  style={{
-                    maxHeight: 100,
-                    display: "flex",
-                    alignItems: "center",
-                    whiteSpace: "nowrap",
-                  }}
+                  className="flex max-h-24 items-center whitespace-nowrap"
                 >
                   {item.type === "text" ? (
                     <span>{item.value}</span>
@@ -86,9 +70,8 @@ function ScrollText({ isSmall }) {
         <HorizontalScrollSection
           multiple
           customRef={scrollRef}
-          wrapperClass={component.landingTextWrapper}
-          wrapperStyle={{ top: 32 }}
-          elementStyle={{ position: "relative", whiteSpace: "nowrap" }}
+          wrapperClass={`${component.landingTextWrapper} top-8`}
+          elementClass="relative whitespace-nowrap"
         >
           {RUNNING_TEXT.map((line, index) => ({
             element: (

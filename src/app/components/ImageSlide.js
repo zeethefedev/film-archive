@@ -7,15 +7,7 @@ import component from "../../style/component.module.css";
 import IconButton from "./generics/IconButton";
 import { motion } from "framer-motion";
 
-function ImageSlide({
-  steps,
-  wrapperStyle,
-  imageWrapperStyle,
-  imageStyle,
-  active = 0,
-  isSmall,
-  handleShowFullscreen,
-}) {
+function ImageSlide({ steps, active = 0, isSmall, handleShowFullscreen }) {
   const [activeStep, setActiveStep] = useState(active);
   const [completed, setCompleted] = useState({});
 
@@ -92,7 +84,6 @@ function ImageSlide({
   return (
     <motion.div
       className={`hide-scrollbar ${component.slideWrapper}`}
-      style={wrapperStyle}
       ref={blogList}
     >
       {!isSmall && (
@@ -104,7 +95,6 @@ function ImageSlide({
       )}
       <motion.div
         className={component.imageListWrapper}
-        style={imageWrapperStyle}
         drag="x"
         dragConstraints={{ right: 0, left: -width }}
       >
@@ -115,7 +105,6 @@ function ImageSlide({
             style={{
               translate: isSmall ? "none" : `${-100 * activeStep}%`,
               transition: "all 300ms ease-in-out",
-              ...imageStyle,
             }}
           >
             <div className={component.imageInnerWrapper}>
@@ -124,7 +113,7 @@ function ImageSlide({
                 <IconButton
                   onClick={handleShowFullscreen}
                   icon="full-screen-exit"
-                  buttonStyle={{ position: "absolute", zIndex: 10 }}
+                  className="absolute z-10"
                 />
               </div>
             </div>
