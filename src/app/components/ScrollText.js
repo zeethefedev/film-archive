@@ -30,7 +30,8 @@ function LineText({ stringArray, imageArray }) {
                 local
                 src={imageArray[index].src}
                 alt={imageArray[index].alt}
-                height="120px"
+                // height="120px"
+                width="100px"
               />
             </span>
           ))}
