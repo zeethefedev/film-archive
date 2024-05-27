@@ -69,9 +69,8 @@ function PhotoList({ photos, description }) {
           />
         )}
         <div
-          className={`hide-scrollbar ${component.photoListWrapper} ${
-            photos.length === 0 && "h-auto"
-          }`}
+          className={`hide-scrollbar ${component.photoListWrapper}`}
+          style={{ height: photos.length === 0 && "auto" }}
         >
           {photos.map((photo, index) => (
             <div key={index} className={component.photoCardOuterWrapper}>

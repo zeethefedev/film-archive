@@ -50,8 +50,8 @@ function PhotoViewer({ fullscreen, photo, isSmall }) {
   }, []);
 
   const width = () => {
-    if (fullscreen || isSmall) return "h-auto";
-    else return "h-[60vw]";
+    if (fullscreen || isSmall) return "w-auto";
+    else return "w-[60vw]";
   };
 
   const maxWidth = () => {

@@ -41,7 +41,7 @@ function PhotoListPlaceholder(props) {
   return (
     <HorizontalScrollSection
       multiple
-      wrapperClass="w-full h-screen flex flex-col	justify-between	items-center m-auto"
+      wrapperClass="w-full h-screen flex flex-col	justify-between	items-center m-auto mb-32"
     >
       {translate.map((x, index) => ({
         element:
