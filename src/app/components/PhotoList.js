@@ -60,7 +60,11 @@ function PhotoList({ photos, description }) {
       <div className="page-layout">
         {photos.length !== 0 && (
           <BackButton
-            className="tetriary-button button-icon-text sticky top-8 z-10 bg-[rgba(245, 242, 228, 0.5)]"
+            className="tetriary-button button-icon-text sticky z-10"
+            buttonStyle={{
+              backgroundColor: "rgba(245, 242, 228, 0.5)",
+              top: "2rem",
+            }}
             icon
           />
         )}
