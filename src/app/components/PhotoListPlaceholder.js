@@ -19,7 +19,7 @@ function LineText({ text = "No more film photos beyond this line" }) {
 
 function Description({ description }) {
   return (
-    <div className="page-layout max-w-2xl m-auto flex flex-column gap-8 items-center text-center">
+    <div className="page-layout max-w-2xl m-auto flex flex-col gap-8 items-center text-center">
       <h3>{description}</h3>
       <BackButton text="back to home" />
     </div>

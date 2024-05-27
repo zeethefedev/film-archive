@@ -81,7 +81,10 @@ function FilmCard({ film, activeCard, isSmall, textColor }) {
         )}
         <div
           className={component.imageCard}
-          style={{ opacity: !activeCard || film.id === activeCard ? 1 : 0.5 }}
+          style={{
+            opacity: !activeCard || film.id === activeCard ? 1 : 0.5,
+            transition: "opacity 300ms ease-in-out",
+          }}
         >
           <Img
             width={!isSmall && "40vw"}
@@ -92,8 +95,8 @@ function FilmCard({ film, activeCard, isSmall, textColor }) {
           />
           {isSmall && (
             <motion.div
-              className="button-text"
-              style={{ textAlign: "center", color: textColor }}
+              className="button-text text-center"
+              style={{ color: textColor }}
             >
               {filmContent.displayName}
             </motion.div>
