@@ -352,6 +352,7 @@ textarea::placeholder {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 32px;
 }
 
 footer {
@@ -372,12 +373,6 @@ footer {
 
 .footer-links-wrapper {
   @apply flex gap-2 justify-between md:gap-6 md:justify-start lg:gap-16;
-}
-
-.footer-links-list {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
 }
 
 .footer-links {
