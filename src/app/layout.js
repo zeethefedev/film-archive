@@ -8,7 +8,7 @@ const poppins = Poppins({
 });
 
 export const metadata = {
-  title: "The Film Archive",
+  title: "The Silence Archive",
   description: "Film is not dead",
 };
 
