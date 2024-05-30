@@ -14,15 +14,10 @@ import IconButton from "./generics/IconButton";
 function PhotoCard({ photo, handleShowFullscreen, isSmall }) {
   return (
     <div className={component.photoCardWrapper}>
-      <div className={component.photoCardInnerWrapper}>
+      <div className="relative flex items-center">
         <IconButton
           onClick={handleShowFullscreen}
-          buttonStyle={{
-            position: "absolute",
-            zIndex: 10,
-            right: 0,
-            bottom: 0,
-          }}
+          className="absolute z-10 right-0 bottom-0"
           icon="full-screen"
         />
         <PhotoViewer isSmall={isSmall} photo={photo} />
@@ -65,18 +60,17 @@ function PhotoList({ photos, description }) {
       <div className="page-layout">
         {photos.length !== 0 && (
           <BackButton
-            className="tetriary-button button-icon-text sticky"
+            className="tetriary-button button-icon-text sticky z-10"
             buttonStyle={{
-              top: 32,
-              zIndex: 10,
               backgroundColor: "rgba(245, 242, 228, 0.5)",
+              top: "2rem",
             }}
             icon
           />
         )}
         <div
-          style={{ height: photos.length === 0 && "auto" }}
           className={`hide-scrollbar ${component.photoListWrapper}`}
+          style={{ height: photos.length === 0 && "auto" }}
         >
           {photos.map((photo, index) => (
             <div key={index} className={component.photoCardOuterWrapper}>

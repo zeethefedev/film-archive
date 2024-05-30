@@ -1,65 +1,9 @@
-/* running text */
-.container {
-  position: relative;
-  height: 140px;
-  width: 80vw;
-  overflow: hidden;
-  line-height: 30px;
-}
-
-@keyframes infiniteScroll {
-  0% {
-    left: 100%;
-  }
-  100% {
-    left: -100%;
-  }
-}
-
-.horizontalScrollingWrapper {
-  left: 100%;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  position: absolute;
-  white-space: nowrap;
-  animation: infiniteScroll 30s linear infinite;
-  display: flex;
-  gap: 28px;
-}
-
-.marquee2 {
-  animation-delay: 15s;
-}
-
-.horizontalScrollingItem {
-  /* min-width: 100px; */
-  display: flex;
-  align-items: center;
-  gap: 28px;
-}
-
 .landingTextWrapper {
-  width: 70vw;
+  @apply w-full sm:w-[80vw] lg:w-[70vw];
+  @apply flex flex-row flex-wrap justify-evenly items-center content-center gap-2;
+  @apply md:flex-col md:justify-center md:flex-nowrap md:items-start;
+  @apply h-screen min-h-screen md:h-auto;
   margin-bottom: 72px;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-/* parallax */
-.parallax {
-  background-image: url("https://www.w3schools.com/howto/img_parallax.jpg");
-
-  /* Set a specific height */
-  min-height: 500px;
-
-  /* Create the parallax scrolling effect */
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
 }
 
 /* film list */
@@ -68,70 +12,59 @@
 }
 
 .filmListWrapper {
-  display: flex;
-  gap: 32px;
+  @apply flex flex-col sm:flex-row;
+  @apply mt-32 sm:mt-0;
+  @apply gap-6 md:gap-8;
 }
 
 /* custom cursor */
 .filmCardWrapper {
   cursor: none;
-  background-color: black;
+  @apply bg-transparent md:bg-black;
 }
 
 .imageCard {
-}
-
-.pointed {
-  width: 7px;
-  height: 7px;
-  background-color: var(--beige);
-  border-radius: 50%;
-}
-
-/* custom cursor */
-.customCursor {
-  position: absolute;
-  z-index: 10;
-  white-space: nowrap;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  color: var(--beige);
+  @apply flex flex-col gap-2 md:block;
 }
 
 /* image list */
-.photoListWrapper,
+.photoListWrapper {
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: flex-start;
+  scroll-snap-type: y mandatory;
+  gap: 32px;
+  @apply h-auto md:h-[90vh];
+  @apply overflow-visible md:overflow-scroll;
+}
+
 .photoCardWrapper {
   height: 90vh;
   display: flex;
   align-items: center;
+  @apply w-full sm:w-auto;
+  @apply block sm:flex;
+  @apply h-auto md:h-[90vh];
 }
 
-.photoCardInnerWrapper {
-  position: relative;
-  display: flex;
-  align-items: center;
-}
-
-.photoListWrapper {
-  flex-direction: column;
-  justify-content: flex-start;
-  overflow: scroll;
-  scroll-snap-type: y mandatory;
-  gap: 32px;
+.photoCardOuterWrapper {
+  @apply w-full flex justify-center md:w-auto md:block;
+  scroll-snap-align: center;
 }
 
 /* image slide */
 .slideWrapper {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  @apply flex items-center justify-between;
+  @apply overflow-scroll sm:overflow-visible;
+  cursor: grab;
 }
 
 .imageListWrapper {
   display: flex;
-  width: 80vw;
-  overflow: hidden;
+  @apply w-auto sm:w-[80vw];
+  @apply overflow-visible sm:overflow-hidden;
 }
 
 .imageOuterWrapper {
@@ -140,160 +73,25 @@
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  @apply min-w-[100vw] sm:min-w-[80vw];
 }
 
 .imageInnerWrapper {
   width: 100%;
-  display: flex;
+  @apply block sm:flex;
   justify-content: center;
 }
 
-.image {
-  display: flex;
-  align-items: flex-end;
-  justify-content: flex-end;
-}
-
-.buttonWrapper {
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-  padding: 24px 24px 0px;
-}
-
-/* zoom image */
-.zoomImageWrapper {
-  object-fit: contain;
-  overflow: hidden;
-}
-
-@media (max-width: 991.98px) {
-  .landingTextWrapper {
-    width: 80vw;
-  }
-}
-
-@media (max-width: 575.98px) {
-  .landingTextWrapper {
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-evenly;
-    align-content: center;
-    flex-wrap: wrap;
-    gap: 8px;
-    height: 100vh;
-    width: 100%;
-  }
-
-  .landingTextLine {
-    display: flex;
-    gap: 8px;
-    width: 100%;
-    justify-content: space-between;
-  }
-
-  .filmListWrapper {
-    flex-direction: column;
-    margin-top: 120px;
-  }
-
-  .photoCardWrapper {
-    width: 100%;
-    display: block;
+@media (orientation: portrait) {
+  .filmListOuterWrapper {
+    @apply pt-32 md:pt-48;
   }
 
   .imageListWrapper {
-    width: auto;
-    overflow: visible;
+    @apply w-auto overflow-visible sm:w-[85vw];
   }
 
   .imageOuterWrapper {
-    min-width: 100vw;
-  }
-
-  .imageInnerWrapper {
-    display: block;
-  }
-
-  .slideWrapper {
-    display: block;
-    overflow: scroll;
-    cursor: grab;
-  }
-}
-
-/* Small devices (landscape phones, less than 768px) */
-@media (max-width: 767.98px) {
-  .filmListWrapper {
-    gap: 24px;
-  }
-
-  .imageCard {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-
-  .filmCardWrapper {
-    background-color: transparent;
-  }
-
-  .photoListWrapper {
-    overflow: visible;
-    height: auto;
-  }
-
-  .photoCardOuterWrapper {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    scroll-snap-align: center;
-  }
-
-  .photoCardWrapper {
-    height: auto;
-  }
-}
-
-/* Medium devices (tablets, less than 992px) */
-@media (max-width: 991.98px) {
-}
-
-/* Large devices (desktops, less than 1200px) */
-@media (max-width: 1199.98px) {
-}
-
-@media (orientation: landscape) {
-}
-
-@media (orientation: portrait) {
-  @media (max-width: 1199.98px) {
-    .filmListOuterWrapper {
-      padding-top: 200px;
-    }
-    .imageListWrapper {
-      width: 85vw;
-    }
-
-    .imageOuterWrapper {
-      min-width: 85vw;
-    }
-  }
-
-  @media (max-width: 767.98px) {
-    .filmListOuterWrapper {
-      padding-top: 120px;
-    }
-  }
-
-  @media (max-width: 575.98px) {
-    .imageListWrapper {
-      width: auto;
-      overflow: visible;
-    }
-
-    .imageOuterWrapper {
-      min-width: 100vw;
-    }
+    @apply min-w-[100vw] sm:min-w-[85vw];
   }
 }

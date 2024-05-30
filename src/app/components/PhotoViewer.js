@@ -3,8 +3,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import Img from "./generics/Img";
 
-import component from "../../style/component.module.css";
-
 function PhotoViewer({ fullscreen, photo, isSmall }) {
   const imageRef = useRef();
   const [pos, setPos] = useState({ x: 0, y: 0, scale: 1 });
@@ -52,14 +50,13 @@ function PhotoViewer({ fullscreen, photo, isSmall }) {
   }, []);
 
   const width = () => {
-    if (fullscreen || isSmall) {
-      return "auto";
-    } else return "60vw";
+    if (fullscreen || isSmall) return "w-auto";
+    else return "w-[60vw]";
   };
 
   const maxWidth = () => {
-    if (fullscreen || isSmall) return "none";
-    else return 540;
+    if (fullscreen || isSmall) return "max-w-none";
+    else return "max-w-xl";
   };
 
   const imageHeight = () => {
@@ -70,21 +67,19 @@ function PhotoViewer({ fullscreen, photo, isSmall }) {
   };
 
   return (
-    <div style={{ width: isSmall && "100%" }}>
+    <div className={`${isSmall && "w-full"}`}>
       <div>
         <div
-          className={component.zoomImageWrapper}
+          className={`object-contain	overflow-hidden ${width()} ${maxWidth()}`}
           ref={imageRef}
-          style={{ width: width(), maxWidth: maxWidth() }}
           onWheelCapture={handleScroll}
         >
           <div
+            className={`w-full origin-["0_0"]`}
             style={{
-              width: "100%",
               transform: isSmall
                 ? "none"
                 : `translate(${pos.x}px, ${pos.y}px) scale(${pos.scale})`,
-              transformOrigin: "0 0",
             }}
           >
             <Img

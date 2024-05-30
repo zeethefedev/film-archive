@@ -77,8 +77,8 @@ function Footer() {
         <div className="footer-content-wrapper">
           <div className="footer-links-wrapper">
             {Object.keys(FOOTER_LINKS).map((list) => (
-              <div key={list} className="footer-links-list">
-                <h4 className="footer-heading">{FOOTER_LINKS[list].name}</h4>
+              <div key={list} className="flex flex-col gap-4">
+                <h4>{FOOTER_LINKS[list].name}</h4>
                 <div className="body-text footer-links">
                   {FOOTER_LINKS[list].links.map((link, index) => (
                     <a key={index} href={link.href}>

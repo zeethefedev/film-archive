@@ -9,7 +9,7 @@ function BackButton(props) {
     className = "primary-button",
     text = "back",
     icon,
-    buttonStyle,
+    buttonStyle = {},
   } = props;
   const router = useRouter();
 
