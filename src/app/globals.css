@@ -361,7 +361,7 @@ footer {
 }
 
 .footer-wrapper {
-  @apply flex flex-col gap-6;
+  @apply flex flex-col gap-6 max-w-screen-2xl m-auto;
   @apply px-6 py-11 sm:px-8 md:p-16 lg:pt-16 lg:pb-20 lg:px-24;
 }
 
