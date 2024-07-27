@@ -1,7 +1,9 @@
 import { notFound } from "next/navigation";
 import { getBaseUrl, getFilmData, getFilmUrl } from "./method.api";
-import { dynamicBlurDataUrl } from "../components/generics/blurDataUrl";
-const API_URL = getBaseUrl("draft");
+
+const API_VERSION =
+  process.env.NODE_ENV === "development" ? "draft" : "published";
+const API_URL = getBaseUrl(API_VERSION);
 const REVALIDATE = 60;
 const MAPI_URL = process.env.NEXT_PUBLIC_MAPI_URL;
 const AUTH_TOKEN = process.env.NEXT_PUBLIC_AUTH_TOKEN;
@@ -18,13 +20,6 @@ export async function getFilmList() {
   const data = await res.json();
   const filmListData = await data.stories.map((film) => getFilmData(film));
 
-  data.stories.forEach(
-    async (film, index) =>
-      await dynamicBlurDataUrl(film.content.thumbnail.filename).then((blur) => {
-        filmListData[index].content.thumbnail.blur = blur;
-      })
-  );
-
   return filmListData;
 }
 
@@ -40,13 +35,6 @@ export async function getFilm(filmName) {
 
   const data = await res.json();
   const filmData = await getFilmData(data.story);
-
-  data.story.content.photos.forEach(
-    async (photo, index) =>
-      await dynamicBlurDataUrl(photo.filename).then((blur) => {
-        filmData.content.photos[index].blur = blur;
-      })
-  );
 
   return filmData;
 }
