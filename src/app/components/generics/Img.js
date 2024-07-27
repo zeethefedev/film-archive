@@ -12,7 +12,6 @@ function Img(props) {
     aspectRatio,
     objectFit = "cover",
     local,
-    blur,
   } = props;
 
   const imageData = !local && src.split("/");
@@ -38,8 +37,6 @@ function Img(props) {
           alt={alt}
           sizes={width}
           fill
-          placeholder={blur ? "blur" : "empty"}
-          blurDataURL={blur}
           onLoad={() => setImageLoading(false)}
           style={{
             objectFit,
