@@ -41,7 +41,7 @@ function FilmList({ films, isSmall }) {
         </HorizontalScrollSection>
       ) : (
         <HorizontalScrollSection
-          xTranslate={["0%", "-360%"]}
+          xTranslate={["0%", "-320%"]}
           bgColor={["#f5f2e4", "#5c0000"]}
           wrapperClass={component.filmListOuterWrapper}
           wrapperStyle={{ top: "20%" }}

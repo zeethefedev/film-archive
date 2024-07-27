@@ -12,25 +12,18 @@ import component from "../../style/component.module.css";
 
 function LineText({ stringArray, imageArray }) {
   return (
-    <div id="container" style={{ display: "flex" }}>
+    <div id="container" className="flex">
       {[1, 2].map((i, index) => (
-        <span
-          id="line"
-          key={index}
-          className="landing-text"
-          style={{ display: "flex" }}
-        >
+        <span id="line" key={index} className="flex landing-text">
           {stringArray.map((string, index) => (
-            <span
-              style={{ display: "flex", alignItems: "center", gap: 28 }}
-              key={index}
-            >
+            <span className="flex items-center gap-7" key={index}>
               {string}
               <Img
                 local
                 src={imageArray[index].src}
                 alt={imageArray[index].alt}
                 height="120px"
+                width="100px"
               />
             </span>
           ))}
@@ -47,29 +40,21 @@ function ScrollText({ isSmall }) {
 
   const translate = [
     useTransform(scrollYProgress, [0, 1], ["1%", "-55%"]),
-    useTransform(scrollYProgress, [0, 1], ["-50%", "-10%"]),
-    useTransform(scrollYProgress, [0, 1], ["-80%", "0%"]),
+    useTransform(scrollYProgress, [0, 1], ["-20%", "-10%"]),
+    useTransform(scrollYProgress, [0, 1], ["-30%", "0%"]),
     useTransform(scrollYProgress, [0, 1], ["-30%", "-5%"]),
   ];
 
   return (
-    <div
-      className="page-layout"
-      style={{ display: "flex", justifyContent: "center" }}
-    >
+    <div className="page-layout flex justify-center">
       {isSmall ? (
         <span className={`landing-text ${component.landingTextWrapper}`}>
           {RUNNING_TEXT_MB.map((line, i) => (
-            <div key={i} className={component.landingTextLine}>
+            <div key={i} className="flex gap-2 w-full justify-between">
               {line.map((item, index) => (
                 <span
                   key={index}
-                  style={{
-                    maxHeight: 100,
-                    display: "flex",
-                    alignItems: "center",
-                    whiteSpace: "nowrap",
-                  }}
+                  className="flex max-h-24 items-center whitespace-nowrap"
                 >
                   {item.type === "text" ? (
                     <span>{item.value}</span>
@@ -85,9 +70,8 @@ function ScrollText({ isSmall }) {
         <HorizontalScrollSection
           multiple
           customRef={scrollRef}
-          wrapperClass={component.landingTextWrapper}
-          wrapperStyle={{ top: 32 }}
-          elementStyle={{ position: "relative", whiteSpace: "nowrap" }}
+          wrapperClass={`top-8 ${component.landingTextWrapper}`}
+          elementClass="relative whitespace-nowrap"
         >
           {RUNNING_TEXT.map((line, index) => ({
             element: (

@@ -25,12 +25,17 @@ function CustomCursor({ useCustomCursor, cursorRef, text }) {
     window.addEventListener("mousemove", moveCursor);
   }, []);
 
+  const customCursorClass =
+    "absolute z-10 whitespace-nowrap flex items-center gap-1 beige";
+
+  const pointedClass = "w-2 h-2 bg-beige rounded-full";
+
   return (
     <div
-      className={`cursor ${useCustomCursor && component.customCursor}`}
+      className={`cursor ${useCustomCursor ? customCursorClass : ""}`}
       style={{ transform: `translate3d(${cursor.x}px, ${cursor.y}px, 0)` }}
     >
-      <div className={`${useCustomCursor && component.pointed}`}></div>
+      <div className={`${useCustomCursor ? pointedClass : ""}`}></div>
       <div>{text}</div>
     </div>
   );
@@ -76,7 +81,10 @@ function FilmCard({ film, activeCard, isSmall, textColor }) {
         )}
         <div
           className={component.imageCard}
-          style={{ opacity: !activeCard || film.id === activeCard ? 1 : 0.5 }}
+          style={{
+            opacity: !activeCard || film.id === activeCard ? 1 : 0.5,
+            transition: "opacity 300ms ease-in-out",
+          }}
         >
           <Img
             width={!isSmall && "40vw"}
@@ -86,8 +94,8 @@ function FilmCard({ film, activeCard, isSmall, textColor }) {
           />
           {isSmall && (
             <motion.div
-              className="button-text"
-              style={{ textAlign: "center", color: textColor }}
+              className="button-text text-center"
+              style={{ color: textColor }}
             >
               {filmContent.displayName}
             </motion.div>
