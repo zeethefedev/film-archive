@@ -12,6 +12,7 @@ function Img(props) {
     aspectRatio,
     objectFit = "cover",
     local,
+    priority,
   } = props;
 
   const imageData = !local && src.split("/");
@@ -43,6 +44,7 @@ function Img(props) {
             filter: isImageLoading ? "blur(5px)" : "blur(0px)",
             transition: "filter 0.3s ease-in",
           }}
+          priority={priority}
         />
       )}
     </div>
