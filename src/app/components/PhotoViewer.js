@@ -89,6 +89,7 @@ function PhotoViewer({ fullscreen, photo, isSmall }) {
               height={imageHeight()}
               aspectRatio={!fullscreen && "1/1"}
               objectFit={fullscreen ? "contain" : "cover"}
+              priority
             />
           </div>
         </div>
