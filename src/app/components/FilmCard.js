@@ -89,9 +89,10 @@ function FilmCard({ film, activeCard, isSmall, textColor }) {
           <Img
             width={!isSmall && "40vw"}
             aspectRatio="7/5"
-            src={filmContent.thumbnail.filename}
+            src={`${filmContent.thumbnail.filename}/m/700x500`}
             alt={filmContent.thumbnail.alt}
             priority
+            loading="eager"
           />
           {isSmall && (
             <motion.div

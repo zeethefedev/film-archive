@@ -13,6 +13,7 @@ function Img(props) {
     objectFit = "cover",
     local,
     priority,
+    loading = "lazy",
   } = props;
 
   const imageData = !local && src.split("/");
@@ -45,6 +46,7 @@ function Img(props) {
             transition: "filter 0.3s ease-in",
           }}
           priority={priority}
+          loading={loading}
         />
       )}
     </div>
