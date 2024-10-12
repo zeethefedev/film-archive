@@ -83,13 +83,14 @@ function PhotoViewer({ fullscreen, photo, isSmall }) {
             }}
           >
             <Img
-              src={photo.filename}
+              src={fullscreen ? photo.filename : `${photo.filename}/m/600x600`}
               alt={photo.alt}
               width="100%"
               height={imageHeight()}
               aspectRatio={!fullscreen && "1/1"}
               objectFit={fullscreen ? "contain" : "cover"}
               priority
+              loading="eager"
             />
           </div>
         </div>
