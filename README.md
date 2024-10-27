@@ -1,3 +1,8 @@
+This is a simple website to showcase my film photos, :star: a gallery :star: , if you will.
+
+Frontend: NextJS
+CMS: StoryBlok API
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
